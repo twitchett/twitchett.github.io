@@ -1,0 +1,19 @@
+{
+  "name": "twitchett.github.io",
+  "version": "0.0.1",
+  "description": "Tabi's Github Page",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/twitchett/twitchett.github.io.git"
+  },
+  "author": "Tabitha Goodall",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/twitchett/twitchett.github.io/issues"
+  },
+  "homepage": "https://github.com/twitchett/twitchett.github.io#readme"
+}
