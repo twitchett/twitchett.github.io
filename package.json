@@ -1,19 +1,22 @@
 {
   "name": "twitchett.github.io",
-  "version": "0.0.1",
-  "description": "Tabi's Github Page",
-  "main": "index.js",
+  "version": "0.1.0",
+  "homepage": "https://twitchett.github.io",
+  "private": true,
+  "dependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  },
+  "devDependencies": {
+    "gh-pages": "^0.12.0",
+    "react-scripts": "0.9.5"
+  },
   "scripts": {
-    "test": "npm test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/twitchett/twitchett.github.io.git"
-  },
-  "author": "Tabitha Goodall",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/twitchett/twitchett.github.io/issues"
-  },
-  "homepage": "https://github.com/twitchett/twitchett.github.io#readme"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  }
 }
