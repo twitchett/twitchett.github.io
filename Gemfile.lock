@@ -197,6 +197,7 @@ DEPENDENCIES
   github-pages (= 134)
   jekyll-feed (~> 0.6)
   jekyll-paginate
+  json
   tzinfo-data
 
 RUBY VERSION
