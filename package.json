@@ -14,7 +14,6 @@
     "webpack": "^2.4.1"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -b master"
+    "start": "bundle exec jekyll serve --config _config.yml,_config.dev.yml"
   }
 }
