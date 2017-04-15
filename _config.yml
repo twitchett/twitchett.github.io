@@ -33,7 +33,6 @@ author:
 
 # Build settings
 markdown: kramdown
-#theme: minima
 gems:
   - jekyll-feed
   - jekyll-paginate
@@ -42,7 +41,6 @@ exclude:
   - Gemfile.lock
   - node_modules
 destination: build
-source: src
 
 # Site config
 paginate: 5
