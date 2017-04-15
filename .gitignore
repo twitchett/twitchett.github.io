@@ -2,4 +2,4 @@
 .sass-cache
 .jekyll-metadata
 /build
-src/assets/bundle.js
+/src
