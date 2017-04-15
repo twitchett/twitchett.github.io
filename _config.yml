@@ -9,7 +9,7 @@
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 
 title: To all pickles...
-description: > # this means to ignore newlines until "baseurl:"
+description: >
   The personal site of Tabitha Goodall, freelancer software developer.
   Originally from the UK, currently living in Berlin. Yeah, I'm not a dude, 
   that graphic needs to be changed. 
@@ -35,5 +35,8 @@ include: ['_pages']
 destination: build
 
 # Site config
+permalink: "/blog/:year/:month/:day/:title"
 paginate: 5
 paginate_path: "/blog/page:num/"
+future: true  # display posts with a date in the future
+disqus_shortname: twitchett
