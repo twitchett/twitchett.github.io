@@ -2,6 +2,16 @@
 layout: default
 ---
 
+<header class="page-header">
+  <h1 class="page-title">It's a blog</h1>
+</header>
+
+<div class="pre-post-list">
+See all: <a href="{{ site.baseurl }}/tags">tags</a> | <a href="{{ site.baseurl }}/categories">categories</a>
+</div>
+
+<hr class="post-list__divider">
+
 <div class="main-post-list">
 
   <ol class="post-list">
@@ -15,10 +25,8 @@ layout: default
         </p>
         <div class="post-list__meta">
           <time datetime="{{ post.date | date: "%-d %b %Y" }}" class="post-list__meta--date date">{{ post.date | date: "%-d %b %Y" }}</time> &#8226; 
-          {% if post.tags != '' %}
-            {% include taglist.html %}
-          {% endif %}
-          {% if post.categories != %}
+          {% include taglist.html tags=post.tags %}
+          {% if post.categories != nil or post.categories == '' %}
             <p>{% include categorieslist.html %}</p>
           {% endif %}
         <hr class="post-list__divider">
