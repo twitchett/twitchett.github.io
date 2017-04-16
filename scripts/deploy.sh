@@ -5,8 +5,7 @@
 # see: https://help.github.com/articles/generic-jekyll-build-failures/#source-setting
 
 # stash untracked
-git stash save -u "stashing local modifications in preparation for commit to master" 
-
+git stash save -u "stashing local modifications in preparation for deploy" 
 git checkout master
 # remove all git tracked files
 git ls-files -z | xargs -0 rm -f
