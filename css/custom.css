@@ -7,6 +7,8 @@
 * uno style overrides
 */
 
+/* ---- section: header ----- */
+
 .user-image {
     width: 150px;
     height: 150px;
@@ -19,4 +21,19 @@
 }
 .navigation .navigation__item:last-child {
     margin-right: 0;
+}
+
+/* ---- section: posts ----- */
+
+.post-list__meta span {
+    font-size: 0.9em;
+}
+
+/*
+* Responsive styles
+*/
+@media all and (max-width: 960px) {
+    .cover-navigation--primary .navigation .navigation__item {
+        width: 30%;
+    }
 }
