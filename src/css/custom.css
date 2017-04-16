@@ -1,8 +1,22 @@
+.post-subtitle {
+    padding-bottom: 0.5em;
+    font-style: italic;
+}
+
 /*
 * uno style overrides
 */
 
+.user-image {
+    width: 150px;
+    height: 150px;
+    /*border: 2px solid white;*/
+}
+
 /* keeps the social icons centered */
 .navigation--social {
     margin-left: 0;
+}
+.navigation .navigation__item:last-child {
+    margin-right: 0;
 }

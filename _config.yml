@@ -1,18 +1,8 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-
-title: To all pickles...
+# Site info
+title: Tabitha Goodall
 description: >
-  The personal site of Tabitha Goodall, freelancer software developer.
-  Originally from the UK, currently living in Berlin. Yeah, I'm not a dude, 
-  that graphic needs to be changed. 
+  British-born, Berlin-based freelancer. Writes code for fun and profit.
+  Apparently writes blogs now too.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
@@ -21,6 +11,13 @@ author:
   email: t.goodall.NOSPAMPLEASE@email.com
   github_username: twitchett
   linkedin_username: tabithagoodall
+
+# Blog config
+permalink: "/blog/:year/:month/:day/:title"
+paginate: 5
+paginate_path: "/blog/page:num/"
+future: true  # display posts with a date in the future
+disqus_shortname: twitchett
 
 # Build settings
 markdown: kramdown
@@ -34,9 +31,3 @@ exclude:
 include: ['_pages']
 destination: build
 
-# Site config
-permalink: "/blog/:year/:month/:day/:title"
-paginate: 5
-paginate_path: "/blog/page:num/"
-future: true  # display posts with a date in the future
-disqus_shortname: twitchett
