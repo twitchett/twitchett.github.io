@@ -28,5 +28,5 @@ git add . && git commit -m "latest changes" && git push origin master
 echo "$script: Pushed to master"
 
 # restore working state
-git checkout source git stash pop
+git checkout source &&  git stash pop
 echo "$script: Done!"

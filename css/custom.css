@@ -2,7 +2,15 @@
     padding-bottom: 0.5em;
     font-style: italic;
 }
-
+.back-link {
+    display: block;
+}
+.post-container .post-header .back-link {
+    margin-bottom: 1.0em;
+}
+.post-container .post-footer .back-link {
+    margin: 1.0em 0;
+}
 /*
 * uno style overrides
 */
@@ -25,7 +33,8 @@
 
 /* ---- section: posts ----- */
 
-.post-list__meta span {
+.post-list__meta span,
+.post-list__meta time {
     font-size: 0.9em;
 }
 
