@@ -2,6 +2,7 @@
 layout: page
 title: About
 permalink: /about/
+id: about
 ---
 
 Maybe I'll put something meaningful here eventually. For now, have a picture of this koala. 
