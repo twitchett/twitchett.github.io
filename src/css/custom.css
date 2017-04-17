@@ -91,10 +91,3 @@
         width: 30%;
     }
 }
-
-@media (max-width: 960px) {
-    /* */
-    .panel-cover {
-        position: static;
-    }
-}
