@@ -1,0 +1,44 @@
+---
+layout: default
+pagetype: blog
+---
+
+<header class="page-header">
+  <h1 class="page-title">It's a blog</h1>
+</header>
+
+<div class="pre-post-list">
+See all: <a href="{{ site.baseurl }}/tags">tags</a> | <a href="{{ site.baseurl }}/categories">categories</a>
+</div>
+
+<hr class="post-list__divider">
+
+<div class="main-post-list">
+
+  <ol class="post-list">
+    {% for post in paginator.posts %}
+      <li>
+        <h2 class="post-list__post-title post-title">
+          <a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+        </h2>
+        <p class="excerpt">
+          {{ post.excerpt | remove: '<p>' | remove: '</p>' }}&hellip;
+        </p>
+        <div class="post-list__meta">
+          <time datetime="{{ post.date | date: "%-d %b %Y" }}" class="post-list__meta--date date">{{ post.date | date: "%-d %b %Y" }}</time> &#8226; 
+          {% include taglist.html tags=post.tags %}
+          {% if post.categories != nil or post.categories == '' %}
+            <p>{% include categorieslist.html %}</p>
+          {% endif %}
+        <hr class="post-list__divider">
+      </li>
+    {% endfor %}
+  </ol>
+
+  <hr class="post-list__divider ">
+
+  {% if paginator.previous_page or paginator.next_page %}
+      {% include pagination.html %}
+  {% endif %}
+
+</div>

@@ -1,17 +1,3 @@
-.post-subtitle {
-    padding-bottom: 0.5em;
-    font-style: italic;
-}
-.back-link {
-    display: block;
-}
-.post-container .post-header .back-link {
-    margin-bottom: 1.0em;
-}
-.post-container .post-footer .back-link {
-    margin: 1.0em 0;
-}
-
 @media (min-width: 961px) {
     .desktop-only {
         display: block !important;
@@ -31,10 +17,36 @@
     }
 }
 
+/* ---- section: posts ----- */
+.post-subtitle {
+    padding-bottom: 0.5em;
+    font-style: italic;
+}
+.back-link {
+    display: block;
+}
+.post-container .post-header .back-link {
+    margin-bottom: 1.0em;
+}
+.post-container .post-footer .back-link {
+    margin: 1.0em 0;
+}
+
+/* ---- section: nav ----- */
+
 .cover-navigation--primary.mobile-only {
     margin: 1em 0;
 }
 
+.navigation .navigation__item.active a {
+    background-color: #4A4A4A;
+}
+.navigation .navigation__item a:hover {
+    background-color: #555;   
+}
+
+/* ---- section: page ----- */
+/* TODO: move to separate file*/
 
 .page-cv h4 {
     margin: .7em 0 .4em 0;
@@ -77,5 +89,12 @@
 @media all and (max-width: 960px) {
     .cover-navigation--primary .navigation .navigation__item {
         width: 30%;
+    }
+}
+
+@media (max-width: 960px) {
+    /* */
+    .panel-cover {
+        position: static;
     }
 }

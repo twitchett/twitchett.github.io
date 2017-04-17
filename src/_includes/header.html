@@ -6,6 +6,7 @@
 <header class="panel-cover" style="background-image: url({{ site.baseurl }}/images/cover.jpg)">
   <div class="panel-main">
 
+
     <div class="panel-main__inner panel-inverted">
     <div class="panel-main__content">
         <a href="{{ site.baseurl }}/" title="Tabi">
@@ -17,14 +18,15 @@
 
         <hr class="panel-cover__divider panel-cover__divider--secondary">
 
+
         <nav class="cover-navigation cover-navigation--primary mobile-only">
-          {% include navigation.html %}
+          {% include navigation.html current=page %}
         </nav>
 
         <div class="navigation-wrapper">
 
           <nav class="cover-navigation cover-navigation--primary">
-            {% include navigation.html %}
+            {% include navigation.html current=page %}
           </nav>
 
           <hr class="panel-cover__divider panel-cover__divider--secondary">
