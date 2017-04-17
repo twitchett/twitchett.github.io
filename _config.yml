@@ -31,4 +31,4 @@ exclude:
   - node_modules
 include: ['_pages']
 destination: build
-
+host: 0.0.0.0 # for local dev. gh will override this.

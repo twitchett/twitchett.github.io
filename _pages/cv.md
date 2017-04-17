@@ -2,7 +2,7 @@
 layout: page
 title: CV
 permalink: /cv/
-id: cv
+pagetype: cv
 ---
 
 ## Career

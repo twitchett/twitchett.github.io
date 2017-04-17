@@ -1,5 +1,6 @@
 <ul class="navigation">
- 	<li class="navigation__item"><a href="{{ site.baseurl }}/#blog" title="it's a blog" class="blog-button">Blog</a></li>
-	<li class="navigation__item"><a href="{{ site.baseurl }}/about" title="about this site" class="blog-button">About</a></li>
-	<li class="navigation__item"><a href="{{ site.baseurl }}/cv" title="hire me" class="blog-button">CV</a></li>
+    {% capture id %}{{ include.current.pagetype }}{% endcapture %}
+    <li class="navigation__item {% if id == 'blog' %}active{% endif %}"><a href="{{ site.baseurl }}/blog" title="it's a blog" class="blog-button">Blog</a></li>
+    <li class="navigation__item {% if id == 'about' %}active{% endif %}"><a href="{{ site.baseurl }}/about" title="about this site" class="blog-button">About</a></li>
+    <li class="navigation__item {% if id == 'cv' %}active{% endif %}"><a href="{{ site.baseurl }}/cv" title="hire me" class="blog-button">CV</a></li>
 </ul>

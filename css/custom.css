@@ -1,9 +1,14 @@
+/* -------- general --------- */
+
+.back-link {
+    display: block;
+}
+
+/* ---- section: posts ----- */
+
 .post-subtitle {
     padding-bottom: 0.5em;
     font-style: italic;
-}
-.back-link {
-    display: block;
 }
 .post-container .post-header .back-link {
     margin-bottom: 1.0em;
@@ -12,48 +17,22 @@
     margin: 1.0em 0;
 }
 
-@media (min-width: 961px) {
-    .desktop-only {
-        display: block !important;
-    }
-    .mobile-only {
-        display: none !important;
-    }
+.post-list__meta span,
+.post-list__meta time {
+    font-size: 0.9em;
 }
- 
-@media (max-width: 960px) {
-    .mobile-only {
-        display:block !important;
-    }
- 
-    .desktop-only {
-        display:none !important;
-    }
-}
+
+/* ------ section: nav ------ */
 
 .cover-navigation--primary.mobile-only {
     margin: 1em 0;
 }
 
-
-.page-cv h4 {
-    margin: .7em 0 .4em 0;
+.navigation .navigation__item.active a {
+    background-color: #4A4A4A;
 }
-
-.page-cv h2 {
-    margin-bottom: .7em;
-}
-
-/*
-* uno style overrides
-*/
-
-/* ---- section: header ----- */
-
-.user-image {
-    width: 150px;
-    height: 150px;
-    /*border: 2px solid white;*/
+.navigation .navigation__item a:hover {
+    background-color: #555;   
 }
 
 /* keeps the social icons centered */
@@ -64,18 +43,9 @@
     margin-right: 0;
 }
 
-/* ---- section: posts ----- */
+/* ---- section: header ----- */
 
-.post-list__meta span,
-.post-list__meta time {
-    font-size: 0.9em;
-}
-
-/*
-* Responsive styles
-*/
-@media all and (max-width: 960px) {
-    .cover-navigation--primary .navigation .navigation__item {
-        width: 30%;
-    }
+.user-image {
+    width: 150px;
+    height: 150px;
 }
