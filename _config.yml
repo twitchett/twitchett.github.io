@@ -5,7 +5,6 @@ description: >
   Apparently writes blogs now too.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-google_analytics: UA-97440732-1
 
 author:
   name: 'Tabitha Goodall'
@@ -32,3 +31,7 @@ exclude:
 include: ['_pages']
 destination: build
 host: 0.0.0.0 # for local dev. gh will override this.
+
+# 3rd party integration
+google_analytics: UA-97440732-1
+instagram_client_id: 71e0eb821e2e489dbb6bd5e5cb9bc0fa
