@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import jsonp from 'jsonp'
 import MediaList from './components/mediaList'
+import dedent from './utils/dedent'
 
 class ReactApp extends React.Component {
 
@@ -31,7 +32,7 @@ class ReactApp extends React.Component {
     }
 
     doOauthRedirect() {
-        const url = `https://api.instagram.com/oauth/authorize/
+        const url = dedent`https://api.instagram.com/oauth/authorize/
             ?client_id=${this.props.config.instagram_client_id}
             &redirect_uri=${this.props.config.url + this.props.config.oauth_redirect_uri}
             &response_type=token`

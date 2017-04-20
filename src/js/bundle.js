@@ -9705,6 +9705,8 @@ module.exports = __webpack_require__(117);
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _templateObject = _taggedTemplateLiteral(['https://api.instagram.com/oauth/authorize/\n            ?client_id=', '\n            &redirect_uri=', '\n            &response_type=token'], ['https://api.instagram.com/oauth/authorize/\n            ?client_id=', '\n            &redirect_uri=', '\n            &response_type=token']);
+
 var _react = __webpack_require__(50);
 
 var _react2 = _interopRequireDefault(_react);
@@ -9721,7 +9723,13 @@ var _mediaList = __webpack_require__(81);
 
 var _mediaList2 = _interopRequireDefault(_mediaList);
 
+var _dedent = __webpack_require__(187);
+
+var _dedent2 = _interopRequireDefault(_dedent);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -9766,7 +9774,7 @@ var ReactApp = function (_React$Component) {
     }, {
         key: 'doOauthRedirect',
         value: function doOauthRedirect() {
-            var url = 'https://api.instagram.com/oauth/authorize/\n            ?client_id=' + this.props.config.instagram_client_id + '\n            &redirect_uri=' + (this.props.config.url + this.props.config.oauth_redirect_uri) + '\n            &response_type=token';
+            var url = (0, _dedent2.default)(_templateObject, this.props.config.instagram_client_id, this.props.config.url + this.props.config.oauth_redirect_uri);
             window.location = url; // yeah...
         }
     }, {
@@ -22827,6 +22835,46 @@ function traverseAllChildren(children, callback, traverseContext) {
 
 module.exports = traverseAllChildren;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 187 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+/*
+* Utility function to remove whitespace in multline
+* interpolated strings.
+*
+* Usage:
+*   let myString = dedent`multi
+*       line
+*       string`
+*/
+function dedent(template) {
+    for (var _len = arguments.length, values = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        values[_key - 1] = arguments[_key];
+    }
+
+    // build the string from the interpolated values
+    var output = template.reduce(function (acc, part, i) {
+        return acc + values[i - 1] + part;
+    });
+
+    // split on new lines
+    var lines = output.split(/(?:\r\n|\n|\r)/);
+
+    // remove leading whitespace.
+    return lines.map(function (line) {
+        return line.replace(/^\s+/gm, '');
+    }).join('').trim();
+}
+
+exports.default = dedent;
 
 /***/ })
 /******/ ]);
