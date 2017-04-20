@@ -9711,6 +9711,8 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactDom = __webpack_require__(83);
 
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
 var _jsonp = __webpack_require__(82);
 
 var _jsonp2 = _interopRequireDefault(_jsonp);
@@ -9727,11 +9729,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var clientId = "71e0eb821e2e489dbb6bd5e5cb9bc0fa";
-var redirectUri = "http://localhost:4000/art";
-var url = "https://api.instagram.com/oauth/authorize/?client_id=" + clientId + "&redirect_uri=" + redirectUri + "&response_type=token";
-var apiRoot = "https://api.instagram.com/v1";
-
 var ReactApp = function (_React$Component) {
     _inherits(ReactApp, _React$Component);
 
@@ -9741,42 +9738,48 @@ var ReactApp = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (ReactApp.__proto__ || Object.getPrototypeOf(ReactApp)).call(this, props));
 
         _this.state = {};
-        // this.state = { token: null }
         _this.fetchImages = _this.fetchImages.bind(_this);
+        _this.doOauthRedirect = _this.doOauthRedirect.bind(_this);
         return _this;
     }
 
     _createClass(ReactApp, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            console.log('in hook');
-            var token = this.getAccessParam('access_token');
+            var token = this.getQueryParam('access_token');
             if (!token) {
-                console.warn('did not find access token, redirecting to oauth endpoint');
-                window.location = url;
+                this.doOauthRedirect();
             } else {
                 this.token = token;
-                console.log('success! got token', token);
                 this.fetchImages();
             }
         }
     }, {
-        key: 'getAccessParam',
-        value: function getAccessParam(param) {
+        key: 'getQueryParam',
+        value: function getQueryParam(param) {
+            // regex to match against #param=, not ?param=, because of the strange
+            // way instagram implements their api 
             var reg = new RegExp('[#]' + param + '=([^&#]*)', 'i');
             var string = reg.exec(window.location.href);
-            console.log('found ', string, ' in ' + window.location.href);
             return string ? string[1] : null;
+        }
+    }, {
+        key: 'doOauthRedirect',
+        value: function doOauthRedirect() {
+            var url = 'https://api.instagram.com/oauth/authorize/\n            ?client_id=' + this.props.config.instagram_client_id + '\n            &redirect_uri=' + (this.props.config.url + this.props.config.oauth_redirect_uri) + '\n            &response_type=token';
+            window.location = url; // yeah...
         }
     }, {
         key: 'fetchImages',
         value: function fetchImages() {
             var _this2 = this;
 
-            var url = 'https://api.instagram.com/v1/users/self/media/recent/?access_token=' + this.token;
+            // NOTE: Instagram does not support CORS!! We have to use JSONP :'(
+            var url = 'https://api.instagram.com/v1/users/' + this.props.config.instagram_user_id + '/media/recent/?access_token=' + this.token;
             (0, _jsonp2.default)(url, null, function (err, data) {
                 if (err) {
                     console.error(err.message);
+                    _this2.setState({ error: true });
                 } else {
                     console.log(data);
                     // check code data.meta.code == 200?
@@ -9787,11 +9790,14 @@ var ReactApp = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            console.log('hello from react');
-
             if (this.state.media) {
-                console.log('got some media! let\'s display them');
                 return _react2.default.createElement(_mediaList2.default, { data: this.state.media.data });
+            } else if (this.state.error) {
+                return _react2.default.createElement(
+                    'div',
+                    null,
+                    'error! :( '
+                );
             } else {
                 console.log('no media to display :(');
                 return _react2.default.createElement(
@@ -9806,7 +9812,13 @@ var ReactApp = function (_React$Component) {
     return ReactApp;
 }(_react2.default.Component);
 
-(0, _reactDom.render)(_react2.default.createElement(ReactApp, null), document.getElementById('galleryContainer'));
+// bootstrap app with properties from _config.yml
+
+
+var root = document.getElementById('galleryContainer');
+if (root) {
+    _reactDom2.default.render(_react2.default.createElement(ReactApp, { config: JSON.parse(root.getAttribute("data-config")) }), root);
+}
 
 /***/ }),
 /* 85 */

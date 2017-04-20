@@ -5,7 +5,4 @@ permalink: /art/
 pagetype: art
 ---
 
-
-<ReactApp id="galleryContainer" />
-
-<script type="text/javascript" src="{{ site.baseurl }}/js/bundle.js"></script>
+<div id="galleryContainer" data-config='{% collect_react_cfg %}' />

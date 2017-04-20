@@ -11,6 +11,7 @@ author:
   email: t.goodall.NOSPAMPLEASE@email.com
   github_username: twitchett
   linkedin_username: tabithagoodall
+  instagram_username: tabi.twitchett
 
 # Blog config
 permalink: "/blog/:year/:month/:day/:title"
@@ -28,10 +29,23 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - node_modules
-include: ['_pages']
+include: 
+  - _pages
+# plugins_dir:
+  # - /src/_plugins
 destination: build
 host: 0.0.0.0 # for local dev. gh will override this.
 
 # 3rd party integration
 google_analytics: UA-97440732-1
 instagram_client_id: 71e0eb821e2e489dbb6bd5e5cb9bc0fa
+instagram_user_id: "2355203811"
+oauth_redirect_uri: "/art"
+
+# These variables are passed to the react app
+react_vars:
+  - url
+  - instagram_user_id
+  - instagram_client_id
+  - author.instagram_username
+  - oauth_redirect_uri
