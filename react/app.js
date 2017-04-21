@@ -31,7 +31,7 @@ class ReactApp extends React.Component {
         return string ? string[1] : null
     }
 
-    doOauthRedirect() {
+    doOauthRedirect () {
         const url = dedent`https://api.instagram.com/oauth/authorize/
             ?client_id=${this.props.config.instagram_client_id}
             &redirect_uri=${this.props.config.url + this.props.config.oauth_redirect_uri}
@@ -73,7 +73,7 @@ class ReactApp extends React.Component {
 }
 
 // bootstrap app with properties from _config.yml
-const root = document.getElementById('galleryContainer')
+const root = document.getElementById('reactApp')
 if (root) {
     ReactDOM.render(
         <ReactApp config={JSON.parse(root.getAttribute("data-config"))} />,
