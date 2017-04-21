@@ -31,8 +31,6 @@ exclude:
   - node_modules
 include: 
   - _pages
-# plugins_dir:
-  # - /src/_plugins
 destination: build
 host: 0.0.0.0 # for local dev. gh will override this.
 
@@ -49,3 +47,4 @@ react_vars:
   - instagram_client_id
   - author.instagram_username
   - oauth_redirect_uri
+  

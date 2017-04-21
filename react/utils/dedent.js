@@ -24,4 +24,3 @@ function dedent(template, ...values) {
 }
 
 export default dedent
-

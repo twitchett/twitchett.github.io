@@ -1,8 +1,10 @@
 #
 # A one off-tag to collect & return Site config settings for use on the page
 # by Javascript.
+#
 # The tag iterates over the list of property names in site.react_vars,
-# looks up each property value and inserts it into a hash, then returns the hash. 
+# looks up each property value and inserts it into a hash, then returns the hash
+# as a JSON object.
 #
 module Jekyll
   
