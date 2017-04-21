@@ -18,7 +18,10 @@
     "webpack": "^2.4.1"
   },
   "scripts": {
+    "build": "webpack && bundle exec jekyll build --config _config.yml,_config.dev.yml",
+    "build-prod": "webpack && bundle exec jekyll build --config _config.yml,_config.prod.yml",
     "start": "bundle exec jekyll serve --config _config.yml,_config.dev.yml",
+    "watchjs": "webpack --watch",
     "deploy": "./scripts/deploy.sh"
   }
 }
