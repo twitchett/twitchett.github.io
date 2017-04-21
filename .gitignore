@@ -2,3 +2,4 @@
 /build/local/
 .sass-cache
 .jekyll-metadata
+npm-debug.log
