@@ -1,5 +1,3 @@
 /node_modules
 .sass-cache
 .jekyll-metadata
-/build
-src/assets/bundle.js
