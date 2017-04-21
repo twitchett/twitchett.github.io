@@ -1,0 +1,25 @@
+@media (min-width: 961px) {
+    .desktop-only {
+        display: block !important;
+    }
+    .mobile-only {
+        display: none !important;
+    }
+}
+ 
+@media (max-width: 960px) {
+    .mobile-only {
+        display:block !important;
+    }
+ 
+    .desktop-only {
+        display:none !important;
+    }
+}
+
+/* ensures the navigation buttons stay the same width */
+@media all and (max-width: 960px) {
+    .cover-navigation--primary .navigation .navigation__item {
+        width: 30%;
+    }
+}

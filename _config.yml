@@ -4,7 +4,6 @@ description: >
   British-born, Berlin-based freelancer. Writes code for fun and profit.
   Apparently writes blogs now too.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 author:
   name: 'Tabitha Goodall'
@@ -31,8 +30,8 @@ exclude:
   - node_modules
 include: 
   - _pages
+source: src
 destination: build
-host: 0.0.0.0 # for local dev. gh will override this.
 
 # 3rd party integration
 google_analytics: UA-97440732-1
@@ -47,4 +46,4 @@ react_vars:
   - instagram_client_id
   - author.instagram_username
   - oauth_redirect_uri
-  
+ 

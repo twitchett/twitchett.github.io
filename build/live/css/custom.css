@@ -1,0 +1,51 @@
+/* -------- general --------- */
+
+.back-link {
+    display: block;
+}
+
+/* ---- section: posts ----- */
+
+.post-subtitle {
+    padding-bottom: 0.5em;
+    font-style: italic;
+}
+.post-container .post-header .back-link {
+    margin-bottom: 1.0em;
+}
+.post-container .post-footer .back-link {
+    margin: 1.0em 0;
+}
+
+.post-list__meta span,
+.post-list__meta time {
+    font-size: 0.9em;
+}
+
+/* ------ section: nav ------ */
+
+.cover-navigation--primary.mobile-only {
+    margin: 1em 0;
+}
+
+.navigation .navigation__item.active a {
+    background-color: #4A4A4A;
+}
+.navigation .navigation__item a:hover {
+    background-color: #555;   
+}
+
+/* keeps the social icons centered */
+.navigation--social {
+    margin-left: 0;
+}
+.navigation .navigation__item:last-child {
+    margin-right: 0;
+}
+
+/* ---- section: header ----- */
+
+.user-image {
+    width: 150px;
+    height: 150px;
+}

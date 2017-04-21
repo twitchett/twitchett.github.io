@@ -1,2 +1,4 @@
+# config setting for local development
 url: http://localhost:4000
-source: src
+host: 0.0.0.0  # access from mobile devices
+destination: build/local
