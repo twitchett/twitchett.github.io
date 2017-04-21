@@ -1,9 +1,7 @@
 # Site info
 title: Tabitha Goodall
-description: >
-  British-born, Berlin-based freelancer. Writes code for fun and profit.
-  Apparently writes blogs now too.
-baseurl: "" # the subpath of your site, e.g. /blog
+description: "" 
+baseurl: ""
 
 author:
   name: 'Tabitha Goodall'
