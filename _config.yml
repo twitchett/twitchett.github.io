@@ -35,7 +35,7 @@ destination: build
 google_analytics: UA-97440732-1
 instagram_client_id: 71e0eb821e2e489dbb6bd5e5cb9bc0fa
 instagram_user_id: "2355203811"
-oauth_redirect_uri: "/art"
+oauth_redirect_uri: "/visual"
 
 # These variables are passed to the react app
 react_vars:
