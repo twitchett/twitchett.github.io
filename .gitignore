@@ -1,5 +1,5 @@
 /node_modules
-/build/local/
+/build
 .sass-cache
 .jekyll-metadata
 npm-debug.log

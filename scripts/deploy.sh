@@ -6,27 +6,38 @@
 
 script="deploy"
 
+if [ -z "$1" ]; then
+  commitMsg="$1"
+else
+  commitMsg="latest changes"
+fi
+
 # stash untracked
 git stash save -u "stashing local modifications in preparation for deploy" 
 echo "$script: Saved local modifications"
 
-# on master, remove all tracked files and then directories
+# build site
+rm -rf .site && npm run build-prod
+
+# on master, remove all tracked files and then tracked directories
 git checkout master
 git ls-files -z | xargs -0 rm -f
 git ls-tree --name-only -d -r -z HEAD | sort -rz | xargs -0 rmdir 
 echo "$script: Cleaned master"
 
-# now we have a clean branch
-# copy across everything from source branch
-git checkout source -- .
-# move src contents to root, delete src
-mv src/* . && rm -r src
+# keep gitignore
+git checkout .gitignore
+
+# copy built files into root and stage them
+cp -a .site/* .
+git add . && git reset -- .site
 echo "$script: Prepared files for commit"
 
-# add, commit, push
-git add . && git commit -m "latest changes" && git push origin master
+# commit, push
+git commit -m "$commitMsg" && git push origin master
 echo "$script: Pushed to master"
 
 # restore working state
-git checkout source &&  git stash pop
+git checkout source && git stash pop
+rm -rf .site
 echo "$script: Done!"
