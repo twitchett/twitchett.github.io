@@ -5,9 +5,78 @@
     <description></description>
     <link>https://twitchett.github.io/</link>
     <atom:link href="https://twitchett.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 22 Apr 2017 10:19:33 +0200</pubDate>
-    <lastBuildDate>Sat, 22 Apr 2017 10:19:33 +0200</lastBuildDate>
+    <pubDate>Sun, 23 Apr 2017 12:48:07 +0200</pubDate>
+    <lastBuildDate>Sun, 23 Apr 2017 12:48:07 +0200</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>Why Instagram's API sucks</title>
+        <description>&lt;p&gt;TL;DR version. Instagram’s API sucks because:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;It does not support CORS requests, only JSONP&lt;/li&gt;
+  &lt;li&gt;It requires an OAUTH token to fetch publicly available content&lt;/li&gt;
+  &lt;li&gt;Unless you’re a brand, advertiser or publisher, you are &lt;em&gt;restricted to the latest 20 images&lt;/em&gt;, and a &lt;em&gt;maximum of 10 users&lt;/em&gt; can access your app&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;….&lt;/p&gt;
+
+&lt;p&gt;I built a little React app to display images from my Instagram stream. Writing React was fun; anything that toucheded Instagram’s API was not. Now, after a few days of wrangling, I’ve just decided to sod the whole thing off and hack my own solution together.&lt;/p&gt;
+
+&lt;p&gt;It’s not like I’m trying to do anything particularly ambitious - all I want I do is &lt;em&gt;fetch my own images&lt;/em&gt; in order to display them on my own site. A simple requirement, right? Probably the most common use case for any client of their API.&lt;/p&gt;
+
+&lt;p&gt;So I go to the &lt;a href=&quot;https://www.instagram.com/developer/&quot;&gt;instagram developer site&lt;/a&gt; to register my app. It wants me to submit a URL that has my privacy policy. My privacy policy? For what? Protecting my own data from myself? Um, okay, whatever. I toss one together, register my client and move on.&lt;/p&gt;
+
+&lt;p&gt;Then I come to the first thing that raises my suspicions about this API:&lt;/p&gt;
+
+&lt;h3 id=&quot;it-does-not-support-cors-for-client-side-requests---only-jsonp&quot;&gt;It does not support CORS for client-side requests - only JSONP&lt;/h3&gt;
+
+&lt;p&gt;Really? You don’t support CORS? Didn’t we all decide JSONP was an &lt;a href=&quot;https://en.wikipedia.org/wiki/JSONP#Security_concerns&quot;&gt;insecure&lt;/a&gt; &lt;a href=&quot;https://cameronspear.com/blog/exactly-what-is-jsonp/&quot;&gt;dirty hack&lt;/a&gt; back in 2010 - before Instagram was even a thing?&lt;/p&gt;
+
+&lt;p&gt;Well, using JSONP is icky, but by no means a showstopper. So I go and find a JSONP library (that hasn’t been updated in years), and install that. Because of course &lt;a href=&quot;https://github.com/mzabriskie/axios&quot;&gt;axios&lt;/a&gt;, being a modern HTTP client, doesn’t support outdated protocols.&lt;/p&gt;
+
+&lt;p&gt;Ok, what next. I check the endpoints to see what request I need to make, and - what’s this? I need an OAUTH access token? To &lt;em&gt;access public content&lt;/em&gt;?&lt;/p&gt;
+
+&lt;h3 id=&quot;you-need-an-oauth2-access-token-for-every-endpoint&quot;&gt;You need an OAUTH2 access token for &lt;strong&gt;every&lt;/strong&gt; endpoint&lt;/h3&gt;
+
+&lt;p&gt;So in other words, in order for any visitor to see the images on my site (which any anonymous user can view just by [going to my instagram page][]), they must:
+a) have their own instagram account, and
+b) grant my application access to their data.
+Even though I absolutely do not need access to their data or to make any requests on their behalf.&lt;/p&gt;
+
+&lt;p&gt;This could raise privacy concerns and will seriously hamper the usability of my app, as users will have to login to see the gallery.&lt;/p&gt;
+
+&lt;p&gt;But I doggedly persist. Thankfully the client-side OAUTH2 flow is pretty straightforward. Ok, access token granted. I make requests and fetch the data and display the images on the page. Yay!&lt;/p&gt;
+
+&lt;p&gt;Now, my app is in Sandbox mode, which means I’m restricted to fetching only the most recent 20 images, and only 10 users can actually access the app (through the OAUTH2 authentication). In order to lift these restrictions and get access to other functionality, I need to apply for a review, then I can “go live”. That’s pretty strict, but maybe they don’t want kids abusing their API, or maybe they’re just control freaks. In any case, I go to apply, and…well, poop.&lt;/p&gt;
+
+&lt;h3 id=&quot;you-must-be-a-brand-advertiser-or-publisher-in-order-to-use-the-api-outside-of-sandbox-mode&quot;&gt;You must be a &lt;em&gt;brand&lt;/em&gt;, &lt;em&gt;advertiser&lt;/em&gt; or &lt;em&gt;publisher&lt;/em&gt; in order to use the API outside of Sandbox mode&lt;/h3&gt;
+
+&lt;p&gt;Basically, Instagram has made their API as close to useless as possible for your average joe developer who just wants to make requests and access content. You’re rate-limited, you’re user-limited, you’re content-limited.&lt;/p&gt;
+
+&lt;p&gt;What’s the point of even making an API available to use? I’m surprised that Instagram, as a child company of Facebook (that apparently has a very decent API), has taken these decisions to make their API so closed off. It stifles creativity and innovation. As someone who makes use of open source software every day, for professional and personal use, this kind of attitude makes me frustrated and sad.&lt;/p&gt;
+
+&lt;p&gt;But in my frustrationg I’ve been exploring alternatives to Instagram’s API. Maybe I’ll make a follow-up post with those findings…&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 15 Apr 2017 18:30:00 +0200</pubDate>
+        <link>https://twitchett.github.io/blog/2017/04/15/why-instagrams-api-sucks</link>
+        <guid isPermaLink="true">https://twitchett.github.io/blog/2017/04/15/why-instagrams-api-sucks</guid>
+        
+        <category>tech</category>
+        
+        <category>instagram</category>
+        
+        <category>api</category>
+        
+        <category>cors</category>
+        
+        <category>oauth2</category>
+        
+        
+        <category>bitching</category>
+        
+      </item>
     
       <item>
         <title>How to get married in Demark, for couples living in Germany</title>

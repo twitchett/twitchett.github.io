@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Categories</title>
+  <title>Why Instagram's API sucks</title>
   <meta name="description" content="">
   <meta name="author" content="Tabitha Goodall">
   <meta name="HandheldFriendly" content="True">
@@ -44,7 +44,7 @@
 
   <link rel="stylesheet" href="/css/theme/main.css">
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="https://twitchett.github.io/categories/">
+  <link rel="canonical" href="https://twitchett.github.io/blog/2017/04/15/why-instagrams-api-sucks">
   <link rel="alternate" type="application/rss+xml" title="Tabitha Goodall" href="/feed.xml">
 </head>
 
@@ -173,62 +173,90 @@
 
     <div class="content-wrapper">
       <div class="content-wrapper__inner">
-        <h2>Categories:</h2>
-<div class="categories"> 
- 
-  <a href="#how-to">how-to</a>
- 
-  <a href="#bitching">bitching</a>
+        <article class="post-container post-container--single">
+  <header class="post-header">
+    <a class="back-link" href="javascript: history.go(-1);"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> go back</a>
+    <div class="post-meta">
+      <time datetime="15 Apr 2017" class="post-meta__date date">15 Apr 2017</time> &#8226;
+      <span class="post-meta__tags">on: <a href="/tags/#tech">tech</a>, <a href="/tags/#instagram">instagram</a>, <a href="/tags/#api">api</a>, <a href="/tags/#cors">cors</a>, <a href="/tags/#oauth2">oauth2</a></span>
+    </div>
+    <h1 class="post-title">Why Instagram's API sucks</h1>
+    <h2 class="post-subtitle">A practical guide</h2>
+  </header>
 
-</div>
+  <section class="post">
+    <p>TL;DR version. Instagram’s API sucks because:</p>
 
-<!-- iterate through all categories on the site --> 
- 
-  <!-- for each tag, create an anchor by using the tag name as an id --> 
-  <div id="how-to">  
-    <h3> how-to </h3>  <!-- for create a heading --> 
+<ol>
+  <li>It does not support CORS requests, only JSONP</li>
+  <li>It requires an OAUTH token to fetch publicly available content</li>
+  <li>Unless you’re a brand, advertiser or publisher, you are <em>restricted to the latest 20 images</em>, and a <em>maximum of 10 users</em> can access your app</li>
+</ol>
 
-    <ul> <!-- create the list of posts -->
-      <!-- iterate through all the posts on the site --> 
-       
-        <!-- list only those which contain the current tag --> 
-        
-       
-        <!-- list only those which contain the current tag --> 
-         
-            <li>
-              <a href="/blog/2017/04/15/how-to-get-married-in-denmark">How to get married in Demark, for couples living in Germany</a>
-            </li>
-        
-       
-        <!-- list only those which contain the current tag --> 
-        
-      
-    </ul>
-  </div>
- 
-  <!-- for each tag, create an anchor by using the tag name as an id --> 
-  <div id="bitching">  
-    <h3> bitching </h3>  <!-- for create a heading --> 
+<p>….</p>
 
-    <ul> <!-- create the list of posts -->
-      <!-- iterate through all the posts on the site --> 
-       
-        <!-- list only those which contain the current tag --> 
-         
-            <li>
-              <a href="/blog/2017/04/15/why-instagrams-api-sucks">Why Instagram's API sucks</a>
-            </li>
-        
-       
-        <!-- list only those which contain the current tag --> 
-        
-       
-        <!-- list only those which contain the current tag --> 
-        
-      
-    </ul>
-  </div>
+<p>I built a little React app to display images from my Instagram stream. Writing React was fun; anything that toucheded Instagram’s API was not. Now, after a few days of wrangling, I’ve just decided to sod the whole thing off and hack my own solution together.</p>
+
+<p>It’s not like I’m trying to do anything particularly ambitious - all I want I do is <em>fetch my own images</em> in order to display them on my own site. A simple requirement, right? Probably the most common use case for any client of their API.</p>
+
+<p>So I go to the <a href="https://www.instagram.com/developer/">instagram developer site</a> to register my app. It wants me to submit a URL that has my privacy policy. My privacy policy? For what? Protecting my own data from myself? Um, okay, whatever. I toss one together, register my client and move on.</p>
+
+<p>Then I come to the first thing that raises my suspicions about this API:</p>
+
+<h3 id="it-does-not-support-cors-for-client-side-requests---only-jsonp">It does not support CORS for client-side requests - only JSONP</h3>
+
+<p>Really? You don’t support CORS? Didn’t we all decide JSONP was an <a href="https://en.wikipedia.org/wiki/JSONP#Security_concerns">insecure</a> <a href="https://cameronspear.com/blog/exactly-what-is-jsonp/">dirty hack</a> back in 2010 - before Instagram was even a thing?</p>
+
+<p>Well, using JSONP is icky, but by no means a showstopper. So I go and find a JSONP library (that hasn’t been updated in years), and install that. Because of course <a href="https://github.com/mzabriskie/axios">axios</a>, being a modern HTTP client, doesn’t support outdated protocols.</p>
+
+<p>Ok, what next. I check the endpoints to see what request I need to make, and - what’s this? I need an OAUTH access token? To <em>access public content</em>?</p>
+
+<h3 id="you-need-an-oauth2-access-token-for-every-endpoint">You need an OAUTH2 access token for <strong>every</strong> endpoint</h3>
+
+<p>So in other words, in order for any visitor to see the images on my site (which any anonymous user can view just by [going to my instagram page][]), they must:
+a) have their own instagram account, and
+b) grant my application access to their data.
+Even though I absolutely do not need access to their data or to make any requests on their behalf.</p>
+
+<p>This could raise privacy concerns and will seriously hamper the usability of my app, as users will have to login to see the gallery.</p>
+
+<p>But I doggedly persist. Thankfully the client-side OAUTH2 flow is pretty straightforward. Ok, access token granted. I make requests and fetch the data and display the images on the page. Yay!</p>
+
+<p>Now, my app is in Sandbox mode, which means I’m restricted to fetching only the most recent 20 images, and only 10 users can actually access the app (through the OAUTH2 authentication). In order to lift these restrictions and get access to other functionality, I need to apply for a review, then I can “go live”. That’s pretty strict, but maybe they don’t want kids abusing their API, or maybe they’re just control freaks. In any case, I go to apply, and…well, poop.</p>
+
+<h3 id="you-must-be-a-brand-advertiser-or-publisher-in-order-to-use-the-api-outside-of-sandbox-mode">You must be a <em>brand</em>, <em>advertiser</em> or <em>publisher</em> in order to use the API outside of Sandbox mode</h3>
+
+<p>Basically, Instagram has made their API as close to useless as possible for your average joe developer who just wants to make requests and access content. You’re rate-limited, you’re user-limited, you’re content-limited.</p>
+
+<p>What’s the point of even making an API available to use? I’m surprised that Instagram, as a child company of Facebook (that apparently has a very decent API), has taken these decisions to make their API so closed off. It stifles creativity and innovation. As someone who makes use of open source software every day, for professional and personal use, this kind of attitude makes me frustrated and sad.</p>
+
+<p>But in my frustrationg I’ve been exploring alternatives to Instagram’s API. Maybe I’ll make a follow-up post with those findings…</p>
+
+
+  </section>
+  <footer class="post-footer">
+    <a class="back-link" href="javascript: history.go(-1);"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> go back</a>
+  </footer>
+  <section id="disqus_thread"></section><!-- /#disqus_thread -->
+</article>
+
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'https://twitchett.github.io/blog/2017/04/15/why-instagrams-api-sucks';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = '/blog/2017/04/15/why-instagrams-api-sucks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+
+      (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//twitchett.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+       })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
 
       </div>
 
