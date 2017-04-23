@@ -44,7 +44,7 @@
 
   <link rel="stylesheet" href="/css/theme/main.css">
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="https://twitchett.github.io/blog/2017/04/15/why-instagrams-api-sucks">
+  <link rel="canonical" href="https://twitchett.github.io/blog/2017/04/23/why-instagrams-api-sucks">
   <link rel="alternate" type="application/rss+xml" title="Tabitha Goodall" href="/feed.xml">
 </head>
 
@@ -177,29 +177,29 @@
   <header class="post-header">
     <a class="back-link" href="javascript: history.go(-1);"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> go back</a>
     <div class="post-meta">
-      <time datetime="15 Apr 2017" class="post-meta__date date">15 Apr 2017</time> &#8226;
+      <time datetime="23 Apr 2017" class="post-meta__date date">23 Apr 2017</time> &#8226;
       <span class="post-meta__tags">on: <a href="/tags/#tech">tech</a>, <a href="/tags/#instagram">instagram</a>, <a href="/tags/#api">api</a>, <a href="/tags/#cors">cors</a>, <a href="/tags/#oauth2">oauth2</a></span>
     </div>
     <h1 class="post-title">Why Instagram's API sucks</h1>
-    <h2 class="post-subtitle">A practical guide</h2>
+    <h2 class="post-subtitle"></h2>
   </header>
 
   <section class="post">
-    <p>TL;DR version. Instagram’s API sucks because:</p>
+    <p>I built a little <a href="/visual">React app</a> to display images from my Instagram stream. Writing React was fun; anything that touched Instagram’s API was not. Now, after a few days of wrangling, I’ve just decided to sod the whole thing off and hack my own solution together.</p>
+
+<p>It’s not as if I’m using the API for anything particularly ambitious/nefarious - all I want I do is <em>fetch my own images</em> in order to display them on my own site. A simple requirement, probably the most common use case for any client of their API. Yet apparently this is not something Instagram wants you to be able to do.</p>
+
+<p>TL;DR version. Instagram’s API sucks because:</p>
 
 <ol>
   <li>It does not support CORS requests, only JSONP</li>
-  <li>It requires an OAUTH token to fetch publicly available content</li>
-  <li>Unless you’re a brand, advertiser or publisher, you are <em>restricted to the latest 20 images</em>, and a <em>maximum of 10 users</em> can access your app</li>
+  <li>You can’t access publicly available content without an OAUTH token</li>
+  <li>Unless you’re a brand, advertiser or publisher, you are <em>restricted to the most recent 20 images</em>, and a <em>maximum of 10 users</em> can access your app</li>
 </ol>
 
-<p>….</p>
+<p>In more detail… (please excuse the change of tense, maybe I’ll edit it at some point).</p>
 
-<p>I built a little React app to display images from my Instagram stream. Writing React was fun; anything that toucheded Instagram’s API was not. Now, after a few days of wrangling, I’ve just decided to sod the whole thing off and hack my own solution together.</p>
-
-<p>It’s not like I’m trying to do anything particularly ambitious - all I want I do is <em>fetch my own images</em> in order to display them on my own site. A simple requirement, right? Probably the most common use case for any client of their API.</p>
-
-<p>So I go to the <a href="https://www.instagram.com/developer/">instagram developer site</a> to register my app. It wants me to submit a URL that has my privacy policy. My privacy policy? For what? Protecting my own data from myself? Um, okay, whatever. I toss one together, register my client and move on.</p>
+<p>The first thing I do is go to the <a href="https://www.instagram.com/developer/">instagram developer site</a> to register my app. It wanted me to submit a URL to my privacy policy. My privacy policy? For what? Protecting my own data from myself? Um, okay, whatever. I toss one together, register my client and move on.</p>
 
 <p>Then I come to the first thing that raises my suspicions about this API:</p>
 
@@ -209,20 +209,24 @@
 
 <p>Well, using JSONP is icky, but by no means a showstopper. So I go and find a JSONP library (that hasn’t been updated in years), and install that. Because of course <a href="https://github.com/mzabriskie/axios">axios</a>, being a modern HTTP client, doesn’t support outdated protocols.</p>
 
-<p>Ok, what next. I check the endpoints to see what request I need to make, and - what’s this? I need an OAUTH access token? To <em>access public content</em>?</p>
+<p>Okay, what next. I check the endpoints to see what request I need to make, and - what’s this? I need an OAUTH access token? To <em>access public content</em>?</p>
 
 <h3 id="you-need-an-oauth2-access-token-for-every-endpoint">You need an OAUTH2 access token for <strong>every</strong> endpoint</h3>
 
-<p>So in other words, in order for any visitor to see the images on my site (which any anonymous user can view just by [going to my instagram page][]), they must:
-a) have their own instagram account, and
-b) grant my application access to their data.
-Even though I absolutely do not need access to their data or to make any requests on their behalf.</p>
+<p>So in other words, in order for any visitor to see the images on my site (which any anonymous user can view just by <a href="https://www.instagram.com/tabi.twitchett/">going to my instagram page</a>), they must:</p>
 
-<p>This could raise privacy concerns and will seriously hamper the usability of my app, as users will have to login to see the gallery.</p>
+<ol>
+  <li>have their own instagram account, and</li>
+  <li>grant my application access to their data.</li>
+</ol>
 
-<p>But I doggedly persist. Thankfully the client-side OAUTH2 flow is pretty straightforward. Ok, access token granted. I make requests and fetch the data and display the images on the page. Yay!</p>
+<p>Even though I absolutely do not need access to their data or to make any requests on their behalf.</p>
 
-<p>Now, my app is in Sandbox mode, which means I’m restricted to fetching only the most recent 20 images, and only 10 users can actually access the app (through the OAUTH2 authentication). In order to lift these restrictions and get access to other functionality, I need to apply for a review, then I can “go live”. That’s pretty strict, but maybe they don’t want kids abusing their API, or maybe they’re just control freaks. In any case, I go to apply, and…well, poop.</p>
+<p>This is some bullshit now. It could raise privacy concerns and will seriously hamper the usability of my app, as users will have to login just to see the gallery.</p>
+
+<p>But I doggedly persist. Thankfully the client-side OAUTH2 flow is pretty straightforward. Okay, access token granted. I make requests and fetch the data and display the images on the page. Yay!</p>
+
+<p>Now, my app is in Sandbox mode, which means I’m restricted to fetching only the most recent 20 images, and only 10 users can actually access the app (through the OAUTH2 authentication). In order to lift these restrictions and get access to other functionality, I need to apply for a review, then I can “go live”. That’s pretty strict, but maybe the Instagram guys don’t want kids abusing their API, or maybe they’re just control freaks. In any case, I go to apply, and…well, poop.</p>
 
 <h3 id="you-must-be-a-brand-advertiser-or-publisher-in-order-to-use-the-api-outside-of-sandbox-mode">You must be a <em>brand</em>, <em>advertiser</em> or <em>publisher</em> in order to use the API outside of Sandbox mode</h3>
 
@@ -230,7 +234,7 @@ Even though I absolutely do not need access to their data or to make any request
 
 <p>What’s the point of even making an API available to use? I’m surprised that Instagram, as a child company of Facebook (that apparently has a very decent API), has taken these decisions to make their API so closed off. It stifles creativity and innovation. As someone who makes use of open source software every day, for professional and personal use, this kind of attitude makes me frustrated and sad.</p>
 
-<p>But in my frustrationg I’ve been exploring alternatives to Instagram’s API. Maybe I’ll make a follow-up post with those findings…</p>
+<p>But in my frustration I’ve been exploring alternatives to Instagram’s API and have come across some useful tools. Maybe I’ll make a follow-up post with those findings…</p>
 
 
   </section>
@@ -242,8 +246,8 @@ Even though I absolutely do not need access to their data or to make any request
 
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://twitchett.github.io/blog/2017/04/15/why-instagrams-api-sucks';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = '/blog/2017/04/15/why-instagrams-api-sucks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'https://twitchett.github.io/blog/2017/04/23/why-instagrams-api-sucks';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = '/blog/2017/04/23/why-instagrams-api-sucks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
       };
 
       (function() { // DON'T EDIT BELOW THIS LINE
