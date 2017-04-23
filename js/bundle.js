@@ -13319,11 +13319,15 @@ var ReactApp = function (_React$Component) {
             if (this.props.media) {
                 return _react2.default.createElement(_mediaList2.default, { data: this.props.media });
             } else {
-                console.log('no media to display :(');
                 return _react2.default.createElement(
                     'div',
                     null,
-                    'No media to display booo'
+                    _react2.default.createElement('i', { 'class': 'fa fa-spinner fa-pulse fa-3x fa-fw' }),
+                    _react2.default.createElement(
+                        'span',
+                        { 'class': 'sr-only' },
+                        'Loading...'
+                    )
                 );
             }
         }
