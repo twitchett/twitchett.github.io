@@ -6,11 +6,8 @@
 
 script="deploy"
 
-if [ -z "$1" ]; then
-  commitMsg="$1"
-else
-  commitMsg="latest changes"
-fi
+# set commitMsg to first arg if passed, otherwise set to default value
+commitMsg=${1:-"latest changes"}
 
 # stash untracked
 git stash save -u "stashing local modifications in preparation for deploy" 
