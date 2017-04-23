@@ -182,6 +182,15 @@
   <section class="post">
     <p>A gallery of my <a href="https://www.instagram.com/tabi.twitchett" target="_blank">instagram stream</a>.</p>
 
+<script type="text/javascript">
+	// i give up, just use a global var.
+	// the problem is that the comments contain a bunch of special chars
+	// that need to be escaped, makes it difficult to set this as a data attribute
+	window.twitchett = {
+		instadump: null
+	}
+</script>
+
 <div id="reactApp" data-config="{&quot;url&quot;:&quot;https://twitchett.github.io&quot;,&quot;instagram_user_id&quot;:&quot;2355203811&quot;,&quot;instagram_client_id&quot;:&quot;71e0eb821e2e489dbb6bd5e5cb9bc0fa&quot;,&quot;instagram_username&quot;:&quot;tabi.twitchett&quot;,&quot;oauth_redirect_uri&quot;:&quot;/visual&quot;}" />
 
 
