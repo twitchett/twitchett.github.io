@@ -1,3 +1,5 @@
+const webpack = require('webpack')
+
 module.exports = {
     entry: './react/app.js',
     output: {
@@ -5,7 +7,8 @@ module.exports = {
         filename: 'bundle.js'
     },
     module: {
-        loaders: [{
+        loaders: [
+        {
             test: /\.jsx?$/,
             include: __dirname + '/react',
             exclude: /(node_modules)/,

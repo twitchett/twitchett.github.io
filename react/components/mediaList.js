@@ -9,12 +9,12 @@ class MediaList extends React.Component {
             currentImage: 0,
             lightboxIsOpen: false
         }
+        // prepare images array for lightbox viewer
         this.images = []
         for (const item of props.data) {
             this.images.push({
-                src: item.images.standard_resolution.url,
-                title: 'image title',
-                caption: item.caption.text
+                src: item.imageHighResolutionUrl,
+                caption: item.caption
             })
         }
         this.openLightbox = this.openLightbox.bind(this)
@@ -53,7 +53,6 @@ class MediaList extends React.Component {
     }
 
     render () {
-        console.log('my props', this.props)
         let styles = {
             img: {
                 display: 'inline-block',
@@ -75,7 +74,7 @@ class MediaList extends React.Component {
                 </div>
                 {this.props.data.map((item, idx) =>
                     <a href="#"  onClick={evt => this.openLightbox(idx, evt)}>
-                        <img src={item.images.thumbnail.url} style={styles.img} />
+                        <img src={item.imageSquareThumbnailUrl} style={styles.img} />
                     </a>
                 )}
             </div>
