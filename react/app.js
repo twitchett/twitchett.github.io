@@ -15,9 +15,11 @@ class ReactApp extends React.Component {
                 <MediaList data={this.props.media} />
             )
         } else {
-            console.log('no media to display :(')
             return (
-                <div>No media to display booo</div>
+                <div>
+                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                    <span class="sr-only">Loading...</span>
+                </div>
             )
         }
     }   
