@@ -36,7 +36,7 @@ foreach($media_list as $media) {
 
 // write to file
 
-$success = file_put_contents($output_dir . $output_file, json_encode($media_list));
+$success = file_put_contents($output_dir . $output_file, json_encode($media_list, JSON_UNESCAPED_SLASHES));
 
 if ($success) {
   echo "instagram scraper wrote " .  count($media_list) . " items to " . $output_file;
