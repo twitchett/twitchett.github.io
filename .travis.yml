@@ -13,7 +13,7 @@ before_install:
 
 install:
   - npm install
-  # - bundle install
+  - bundle install
 
-# before_script: npm run build-prod
-# script: echo "no tests yet"
+before_script: npm run build-prod
+script: echo "no tests yet"
