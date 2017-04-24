@@ -1,7 +1,12 @@
 {
   "name": "twitchett.github.io",
+  "description": "A blog/image gallery site built with Jekyll and React",
   "version": "0.1.0",
   "homepage": "https://twitchett.github.io",
+  "respository": {
+    "type": "git",
+    "url": "https://github.com/twitchett/twitchett.github.io/"
+  },
   "devDependencies": {
     "axios": "^0.16.1",
     "babel-core": "^6.24.1",

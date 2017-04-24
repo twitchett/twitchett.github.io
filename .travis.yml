@@ -12,5 +12,5 @@ install:
   - npm install
   - bundle install
 
-before_script: webpack && bundle exec jekyll build --config _config.yml,_config.prod.yml
+before_script: npm run build-prod
 script: echo "no tests yet"
