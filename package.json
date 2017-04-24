@@ -5,7 +5,7 @@
   "homepage": "https://twitchett.github.io",
   "respository": {
     "type": "git",
-    "url": "https://github.com/twitchett/twitchett.github.io/"
+    "url": "git://github.com/twitchett/twitchett.github.io.git"
   },
   "devDependencies": {
     "axios": "^0.16.1",
