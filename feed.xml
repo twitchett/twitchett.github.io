@@ -5,8 +5,8 @@
     <description></description>
     <link>https://twitchett.github.io/</link>
     <atom:link href="https://twitchett.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 24 Apr 2017 22:13:33 +0200</pubDate>
-    <lastBuildDate>Mon, 24 Apr 2017 22:13:33 +0200</lastBuildDate>
+    <pubDate>Mon, 24 Apr 2017 23:45:32 +0200</pubDate>
+    <lastBuildDate>Mon, 24 Apr 2017 23:45:32 +0200</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -174,12 +174,12 @@
       </item>
     
       <item>
-        <title>Of Shoes and Ships and Sealing Wax</title>
-        <description>&lt;p&gt;I built this site because having had my nose stuck in Angular 1 for the last 18 months, I wanted to do something different. Actually it was initially intended to be a React project, but this &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll&lt;/a&gt; seems to have got all my bases covered. In fact this is probably the least use I have for Javascript on any site since, well, I started web development.&lt;/p&gt;
+        <title>Hello Jekyll</title>
+        <description>&lt;p&gt;I built this site because having had my nose stuck in Angular 1 for the last year or so, I wanted to do something different. Actually it was initially intended to be a React project, but this &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll&lt;/a&gt; is just making things too easy. And now I’ve got a collection of static pages which is pretty much exactly the opposite of a single page app. Ha. But it’s fun.&lt;/p&gt;
 
 &lt;p&gt;First time using a static-site generator, and I’m blown away by how easy it is to get something off the ground.&lt;/p&gt;
 
-&lt;p&gt;Having content and code so close together and under the same version control seems a bit icky, but maybe because I’m not used to working this way.&lt;/p&gt;
+&lt;p&gt;Having content and code so close together and under the same version control seems a bit icky, but maybe I’m just not used to working this way.&lt;/p&gt;
 
 </description>
         <pubDate>Fri, 14 Apr 2017 07:20:24 +0200</pubDate>
@@ -189,6 +189,8 @@
         <category>tech</category>
         
         <category>jekyll</category>
+        
+        <category>site</category>
         
         
       </item>
