@@ -4,6 +4,14 @@
     display: block;
 }
 
+.page-header {
+    margin-top: 0;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
 /* ---- section: posts ----- */
 
 .post-subtitle {

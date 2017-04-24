@@ -42,8 +42,12 @@
   <meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
   <meta name="theme-color" content="#ffffff">
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
   <link rel="stylesheet" href="/css/theme/main.css">
   <link rel="stylesheet" href="/css/main.css">
+  
   <link rel="canonical" href="https://twitchett.github.io/about/">
   <link rel="alternate" type="application/rss+xml" title="Tabitha Goodall" href="/feed.xml">
 </head>
@@ -141,8 +145,8 @@
 
             
               <!-- Email -->
-              <li class="navigation__item">
-                <a href="mailto:t.goodall.NOSPAMPLEASE@email.com" title="Email t.goodall.NOSPAMPLEASE@email.com" target="_blank">
+              <li class="navigation__item js_email">
+                <a href="send-an-email" title="Email t.goodall.NOSPAMPLEASE@email.com" target="_blank">
                   <i class="icon icon-mail"></i>
                   <span class="label">Email</span>
                 </a>
@@ -180,9 +184,55 @@
   </header>
 
   <section class="post">
-    <p>Maybe I’ll put something meaningful here eventually. For now, have a picture of this koala.</p>
+    <p>Hi! I’m Tabi.</p>
 
-<p><img src="https://cdn.meme.am/images/600x600/12794275/koala-sleepy-bear.jpg" alt="koala" height="300px" /></p>
+<p>I built this site mainly as a way to learn and experiment with new technologies, and also because I felt that being a web developer, I should probably have an actual website.</p>
+
+<p>It’s a Jekyll site with a React app thrown in for good measure, cobbled together with the help of some PHP and little bit of Ruby. It’s served on Github pages, which I initially thought would make life simple, but in actual fact just resulted in having to write some messy bash scripts to get around their restrictions.</p>
+
+<p>I’m always open to hearing about new projects. If you like what you see, get in touch!</p>
+
+<div>
+  <form class="well form-horizontal contact_form" action=" " method="POST" id="contact_form">
+    <div class="alert alert-success success_message" role="alert">Thanks! Your message has been submitted.</div>
+    <fieldset>
+      <!-- Text input-->
+      <div class="form-group">
+        <div class="col-md-8 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input name="name" placeholder="name" class="form-control" type="text" />
+          </div>
+        </div>
+      </div>
+      <!-- Text input-->
+      <div class="form-group">
+        <div class="col-md-8 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+            <input name="email" placeholder="e-mail" class="form-control" type="text" />
+          </div>
+        </div>
+      </div>
+      <!-- Text area -->
+      <div class="form-group">
+        <div class="col-md-8 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+            <textarea class="form-control" name="comment" placeholder="Say something"></textarea>
+          </div>
+        </div>
+      </div>
+      <!-- Success message -->
+      <!-- Button -->
+      <div class="form-group">
+        <div class="col-md-8">
+          <button type="submit" class="btn btn-warning">Send <span class="glyphicon glyphicon-send"></span></button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
 
   </section>
 
