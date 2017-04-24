@@ -7,7 +7,7 @@
     "type": "git",
     "url": "git://github.com/twitchett/twitchett.github.io.git"
   },
-  "devDependencies": {
+  "dependencies": {
     "axios": "^0.16.1",
     "babel-core": "^6.24.1",
     "babel-loader": "^6.4.1",
