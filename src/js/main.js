@@ -2,6 +2,9 @@
 layout: null
 ---
 $(document).ready(function () {
+
+  /* Navigation / Header */
+
   $('a.blog-button').click(function (e) {
     if ($('.panel-cover').hasClass('panel-cover--collapsed')) return
     currentWidth = $('.panel-cover').width()
@@ -32,4 +35,38 @@ $(document).ready(function () {
     $('.btn-mobile-menu__icon').toggleClass('icon-list icon-x-circle animated fadeIn')
   })
 
+
+  $('.navigation .navigation__item.js_email').click(function (e) {
+    e.preventDefault()
+    window.location.href = "mailto:" + getEmail()
+  })
+
+  /* Contact form */
+
+  var $form = $('#contact_form')
+  $form.submit(function (e) {
+    e.preventDefault()
+
+    var address = getEmail()
+
+    // TODO: validate email address
+
+    $.ajax({
+      url: "https://formspree.io/" + address,
+      method: "POST",
+      data: $form.serialize(),
+      dataType: "json",
+      success: function () {
+        $('.success_message').slideDown({ opacity: "show" }, "slow")
+        $form[0].reset()
+      }
+    })
+  })
+
+
+  function getEmail () {
+    var p1 = "t.goodall"
+    var p2 = "email"
+    return p1 + "@" + p2 + ".com"
+  }
 })
