@@ -17,9 +17,21 @@
     }
 }
 
-/* ensures the navigation buttons stay the same width */
 @media all and (max-width: 960px) {
+    /* ensures the main navigation buttons stay the same width */
     .cover-navigation--primary .navigation .navigation__item {
         width: 30%;
+    }
+}
+
+@media (max-width: 960px) {
+    /* decrease the size of the social button icons */
+    .cover-navigation.navigation--social .navigation .navigation__item {
+        width: 20%;
+    }
+
+    /* enable scrolling on landing page header */
+    .panel-cover.header-page-root {
+        overflow-y: auto
     }
 }
