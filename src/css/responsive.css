@@ -34,4 +34,9 @@
     .panel-cover.header-page-root {
         overflow-y: auto
     }
+
+    /* needs a crazy z-index to display in front of the lightbox */
+    .panel-cover.header-page-visual {
+        z-index: 3000;
+    }
 }

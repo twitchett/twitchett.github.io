@@ -70,6 +70,8 @@ class MediaList extends React.Component {
                         onClickPrev={this.goToPrevious}
                         onClickThumbnail={this.goToIndex}
                         showThumbnails={true}
+                        backdropClosesModal={true}
+                        showCloseButton={false}
                     />
                 </div>
                 {this.props.data.map((item, idx) =>

@@ -12601,7 +12601,9 @@ var MediaList = function (_React$Component) {
                         onClickNext: this.goToNext,
                         onClickPrev: this.goToPrevious,
                         onClickThumbnail: this.goToIndex,
-                        showThumbnails: true
+                        showThumbnails: true,
+                        backdropClosesModal: true,
+                        showCloseButton: false
                     })
                 ),
                 this.props.data.map(function (item, idx) {
