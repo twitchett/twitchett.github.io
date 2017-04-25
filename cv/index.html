@@ -54,122 +54,113 @@
 
 
   <body>
-    <span class="mobile btn-mobile-menu">
-  <i class="icon icon-list btn-mobile-menu__icon"></i>
-  <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
-</span>
+    <!-- mobile only: pull down menu for non-landing pages -->
 
-<header class="panel-cover" style="background-image: url(/images/cover.jpg)">
+  <span class="mobile btn-mobile-menu">
+    <i class="icon icon-list btn-mobile-menu__icon"></i>
+    <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+  </span>
+
+
+<header class="panel-cover header-page-cv" style="background-image: url(/images/cover.jpg)">
   <div class="panel-main">
 
 
     <div class="panel-main__inner panel-inverted">
-    <div class="panel-main__content">
-        <a href="/" title="Tabi">
-          <img src="/images/profile.jpg" class="user-image" alt="Tabi">
-          <h1 class="panel-cover__title panel-title">Tabitha Goodall</h1>
-        </a>
-        <hr class="panel-cover__divider">
-        <p class="panel-cover__description">British-born, Berlin-based freelancer. Writes code for fun and profit. May occasionally attempt to draw things.</p>
-
-        <hr class="panel-cover__divider panel-cover__divider--secondary">
-
-
-        <nav class="cover-navigation cover-navigation--primary mobile-only">
-          <ul class="navigation">
-    
-    <li class="navigation__item ">
-        <a href="/blog" title="it's a blog" class="blog-button">Blog</a>
-    </li>
-    <li class="navigation__item ">
-        <a href="/visual" title="hire me" class="blog-button">Visual</a>
-    </li>
-    <li class="navigation__item active">
-        <a href="/cv" title="hire me" class="blog-button">CV</a>
-    </li>
-    <li class="navigation__item ">
-        <a href="/about" title="about this site" class="blog-button">About</a>
-    </li>
-</ul>
-        </nav>
-
-        <div class="navigation-wrapper">
-
-          <nav class="cover-navigation cover-navigation--primary">
-            <ul class="navigation">
-    
-    <li class="navigation__item ">
-        <a href="/blog" title="it's a blog" class="blog-button">Blog</a>
-    </li>
-    <li class="navigation__item ">
-        <a href="/visual" title="hire me" class="blog-button">Visual</a>
-    </li>
-    <li class="navigation__item active">
-        <a href="/cv" title="hire me" class="blog-button">CV</a>
-    </li>
-    <li class="navigation__item ">
-        <a href="/about" title="about this site" class="blog-button">About</a>
-    </li>
-</ul>
-          </nav>
+      <div class="panel-main__content">
+          <a href="/" title="Tabi">
+            <img src="/images/profile.jpg" class="user-image" alt="Tabi">
+            <h1 class="panel-cover__title panel-title">Tabitha Goodall</h1>
+          </a>
+          <hr class="panel-cover__divider">
+          <p class="panel-cover__description">British-born, Berlin-based freelancer. Writes code for fun and profit. May occasionally attempt to draw things.</p>
 
           <hr class="panel-cover__divider panel-cover__divider--secondary">
 
+          <!-- mobile-only: display navigation on header only for landing page --> 
+          
 
-          <nav class="cover-navigation navigation--social">
-            <ul class="navigation">
 
+          <div class="navigation-wrapper">
+
+            <nav class="cover-navigation cover-navigation--primary">
+    <ul class="navigation">
+        
+        <li class="navigation__item ">
+            <a href="/blog" title="it's a blog" class="blog-button">Blog</a>
+        </li>
+        <li class="navigation__item ">
+            <a href="/visual" title="hire me" class="blog-button">Visual</a>
+        </li>
+        <li class="navigation__item active">
+            <a href="/cv" title="hire me" class="blog-button">CV</a>
+        </li>
+        <li class="navigation__item ">
+            <a href="/about" title="about this site" class="blog-button">About</a>
+        </li>
+    </ul>
+</nav>
+
+            <hr class="panel-cover__divider panel-cover__divider--secondary">
+
+            <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  
+    <!-- Twitter -->
+    <li class="navigation__item">
+      <a href="http://twitter.com/tabi_twitchett" title="@tabi_twitchett on Twitter" target="_blank">
+        <i class="icon icon-social-twitter"></i>
+        <span class="label">Twitter</span>
+      </a>
+    </li>
+  
+
+  
+
+  
+    <!-- LinkedIn -->
+    <li class="navigation__item">
+      <a href="https://www.linkedin.com/in/tabithagoodall" title="tabithagoodall on LinkedIn" target="_blank">
+        <i class="icon icon-social-linkedin"></i>
+        <span class="label">LinkedIn</span>
+      </a>
+    </li>
+  
+
+  
+    <!-- GitHub -->
+    <li class="navigation__item">
+      <a href="https://www.github.com/twitchett" title="twitchett on GitHub" target="_blank">
+        <i class="icon icon-social-github"></i>
+        <span class="label">GitHub</span>
+      </a>
+    </li>
+  
+
+  
+    <!-- Email -->
+    <li class="navigation__item js_email">
+      <a href="send-an-email" title="Email t.goodall.NOSPAMPLEASE@email.com" target="_blank">
+        <i class="icon icon-mail"></i>
+        <span class="label">Email</span>
+      </a>
+    </li>
+  
+
+    <li class="navigation__item">
+      <a href="/feed.xml" title="Subscribe" target="_blank">
+        <i class="icon icon-rss"></i>
+        <span class="label">RSS</span>
+      </a>
+    </li>
+
+  </ul>
+</nav>
             
-
-            
-
-            
-              <!-- LinkedIn -->
-              <li class="navigation__item">
-                <a href="https://www.linkedin.com/in/tabithagoodall" title="tabithagoodall on LinkedIn" target="_blank">
-                  <i class="icon icon-social-linkedin"></i>
-                  <span class="label">LinkedIn</span>
-                </a>
-              </li>
-            
-
-            
-              <!-- GitHub -->
-              <li class="navigation__item">
-                <a href="https://www.github.com/twitchett" title="twitchett on GitHub" target="_blank">
-                  <i class="icon icon-social-github"></i>
-                  <span class="label">GitHub</span>
-                </a>
-              </li>
-            
-
-            
-              <!-- Email -->
-              <li class="navigation__item js_email">
-                <a href="send-an-email" title="Email t.goodall.NOSPAMPLEASE@email.com" target="_blank">
-                  <i class="icon icon-mail"></i>
-                  <span class="label">Email</span>
-                </a>
-              </li>
-            
-
-            <!-- RSS -->
-            <li class="navigation__item">
-              <a href="/feed.xml" title="Subscribe" target="_blank">
-                <i class="icon icon-rss"></i>
-                <span class="label">RSS</span>
-              </a>
-            </li>
-
-            </ul>
-          </nav>
-
+          </div>
         </div>
-
-      </div>
-
     </div>
-
     <div class="panel-cover--overlay"></div>
   </div>
 </header>

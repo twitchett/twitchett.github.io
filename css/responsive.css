@@ -23,3 +23,9 @@
         width: 30%;
     }
 }
+
+@media (max-width: 960px) {
+    .cover-navigation.navigation--social .navigation .navigation__item {
+        width: 20%;
+    }
+}
