@@ -36,7 +36,7 @@
     }
 
     /* needs a crazy z-index to display in front of the lightbox */
-    .panel-cover.header-page-visual {
+    .panel-cover.header-page-gallery {
         z-index: 3000;
     }
 }
