@@ -1,8 +1,8 @@
 ---
 layout: page
 title: Scrawls and Photos
-permalink: /visual/
-pagetype: visual
+permalink: /gallery/
+pagetype: gallery
 ---
 
 A gallery of my <a href="https://www.instagram.com/{{ site.author.instagram_username }}" target="_blank">instagram stream</a>.

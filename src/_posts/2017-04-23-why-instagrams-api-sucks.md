@@ -54,7 +54,7 @@ What's the point of even making an API available to use? I'm surprised that Inst
 
 But in my frustration I've been exploring alternatives to Instagram's API and have come across some useful tools. Maybe I'll make a follow-up post with those findings...
 
-[react_app]: /visual
+[react_app]: /gallery
 [axios]: https://github.com/mzabriskie/axios
 [instagram_api]: https://www.instagram.com/developer/
 [jsonp_insecure]: https://en.wikipedia.org/wiki/JSONP#Security_concerns
