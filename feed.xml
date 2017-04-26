@@ -5,37 +5,37 @@
     <description></description>
     <link>https://twitchett.github.io/</link>
     <atom:link href="https://twitchett.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 26 Apr 2017 07:32:23 +0200</pubDate>
-    <lastBuildDate>Wed, 26 Apr 2017 07:32:23 +0200</lastBuildDate>
+    <pubDate>Wed, 26 Apr 2017 08:20:21 +0200</pubDate>
+    <lastBuildDate>Wed, 26 Apr 2017 08:20:21 +0200</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
         <title>Why Instagram's API sucks</title>
         <description>&lt;p&gt;I built a little &lt;a href=&quot;/gallery&quot;&gt;React app&lt;/a&gt; to display images from my Instagram stream. Writing React was fun; anything that touched Instagram’s API was not. Now, after a few days of wrangling, I’ve just decided to sod the whole thing off and hack my own solution together.&lt;/p&gt;
 
-&lt;p&gt;It’s not as if I’m using the API for anything particularly ambitious/nefarious - all I want I do is &lt;em&gt;fetch my own images&lt;/em&gt; in order to display them on my own site. A simple requirement, probably the most common use case for any client of their API. Yet apparently this is not something Instagram wants you to be able to do.&lt;/p&gt;
+&lt;p&gt;It’s not as if I wanted to use the API for anything particularly ambitious/nefarious - all I want I do is &lt;em&gt;fetch my own images&lt;/em&gt; in order to display them on my own site. A simple requirement, probably the most common use case for any client of their API. Yet apparently this is not something Instagram wants you to be able to do.&lt;/p&gt;
 
-&lt;p&gt;TL;DR version. Instagram’s API sucks because:&lt;/p&gt;
+&lt;div class=&quot;well&quot;&gt;
+    &lt;p&gt;TL;DR? Instagram's API sucks because:&lt;/p&gt;
+    &lt;ol&gt;
+    &lt;li&gt;It does not support CORS requests, only JSONP&lt;/li&gt;
+    &lt;li&gt;You can't access publicly available content without an OAUTH token&lt;/li&gt;
+    &lt;li&gt;Unless you're a brand, advertiser or publisher, you are *restricted to the most recent 20 images*, and a *maximum of 10 users* can access your app&lt;/li&gt;&lt;/ol&gt;
+&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;It does not support CORS requests, only JSONP&lt;/li&gt;
-  &lt;li&gt;You can’t access publicly available content without an OAUTH token&lt;/li&gt;
-  &lt;li&gt;Unless you’re a brand, advertiser or publisher, you are &lt;em&gt;restricted to the most recent 20 images&lt;/em&gt;, and a &lt;em&gt;maximum of 10 users&lt;/em&gt; can access your app&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;Here’s the longer version.&lt;/p&gt;
 
-&lt;p&gt;In more detail… (please excuse the change of tense, maybe I’ll edit it at some point).&lt;/p&gt;
+&lt;p&gt;The first thing I did was go to the &lt;a href=&quot;https://www.instagram.com/developer/&quot;&gt;instagram developer site&lt;/a&gt; to register my app. As part of the registration, Instagram wanted me to submit a URL to my privacy policy, which of course I didn’t have, because what would I need a privacy policy for? Protecting my own data from myself? Um, okay, whatever. I tossed one together, registered my client and moved on.&lt;/p&gt;
 
-&lt;p&gt;The first thing I do is go to the &lt;a href=&quot;https://www.instagram.com/developer/&quot;&gt;instagram developer site&lt;/a&gt; to register my app. It wanted me to submit a URL to my privacy policy. My privacy policy? For what? Protecting my own data from myself? Um, okay, whatever. I toss one together, register my client and move on.&lt;/p&gt;
-
-&lt;p&gt;Then I come to the first thing that raises my suspicions about this API:&lt;/p&gt;
+&lt;p&gt;Then I came to the first thing that raised my suspicions about this API:&lt;/p&gt;
 
 &lt;h3 id=&quot;it-does-not-support-cors-for-client-side-requests---only-jsonp&quot;&gt;It does not support CORS for client-side requests - only JSONP&lt;/h3&gt;
 
-&lt;p&gt;Really? You don’t support CORS? Didn’t we all decide JSONP was an &lt;a href=&quot;https://en.wikipedia.org/wiki/JSONP#Security_concerns&quot;&gt;insecure&lt;/a&gt; &lt;a href=&quot;https://cameronspear.com/blog/exactly-what-is-jsonp/&quot;&gt;dirty hack&lt;/a&gt; back in 2010 - before Instagram was even a thing?&lt;/p&gt;
+&lt;p&gt;Really? JSONP? CORS is the de facto web standard for allowing client-side Javascript (i.e. my image gallery) to make a “cross origin request” to different server (i.e. Instagram). JSONP is an &lt;a href=&quot;https://en.wikipedia.org/wiki/JSONP#Security_concerns&quot;&gt;insecure&lt;/a&gt; &lt;a href=&quot;https://cameronspear.com/blog/exactly-what-is-jsonp/&quot;&gt;dirty hack&lt;/a&gt;, which I thought we stopped using back in 2010 - before Instagram was even a thing.&lt;/p&gt;
 
-&lt;p&gt;Well, using JSONP is icky, but by no means a showstopper. So I go and find a JSONP library (that hasn’t been updated in years), and install that. Because of course &lt;a href=&quot;https://github.com/mzabriskie/axios&quot;&gt;axios&lt;/a&gt;, being a modern HTTP client, doesn’t support outdated protocols.&lt;/p&gt;
+&lt;p&gt;Well, JSONP is icky, but having to use it is by no means a showstopper. So I went to find a JSONP library (that hasn’t been updated in years), and installed that. Because of course &lt;a href=&quot;https://github.com/mzabriskie/axios&quot;&gt;axios&lt;/a&gt;, being a modern HTTP client, doesn’t support outdated protocols.&lt;/p&gt;
 
-&lt;p&gt;Okay, what next. I check the endpoints to see what request I need to make, and - what’s this? I need an OAUTH access token? To &lt;em&gt;access public content&lt;/em&gt;?&lt;/p&gt;
+&lt;p&gt;Okay, what next. I checked the endpoints to see what request I needed to make, and - what’s this? I need an OAUTH access token? To &lt;em&gt;access public content&lt;/em&gt;?&lt;/p&gt;
 
 &lt;h3 id=&quot;you-need-an-oauth2-access-token-for-every-endpoint&quot;&gt;You need an OAUTH2 access token for &lt;strong&gt;every&lt;/strong&gt; endpoint&lt;/h3&gt;
 
@@ -46,17 +46,21 @@
   &lt;li&gt;grant my application access to their data.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Even though I absolutely do not need access to their data or to make any requests on their behalf.&lt;/p&gt;
+&lt;p&gt;Even though I absolutely do not need access to their data, or need to make any requests on their behalf.&lt;/p&gt;
 
-&lt;p&gt;This is some bullshit now. It could raise privacy concerns and will seriously hamper the usability of my app, as users will have to login just to see the gallery.&lt;/p&gt;
+&lt;p&gt;This is some bullshit now. It could raise privacy concerns and will seriously hamper the usability of my app, as users will &lt;strong&gt;have&lt;/strong&gt; to login just to see the gallery.&lt;/p&gt;
 
-&lt;p&gt;But I doggedly persist. Thankfully the client-side OAUTH2 flow is pretty straightforward. Okay, access token granted. I make requests and fetch the data and display the images on the page. Yay!&lt;/p&gt;
+&lt;p&gt;But I doggedly persisted. Thankfully the client-side OAUTH2 flow is pretty straightforward. Okay, access token granted. I can make requests and fetch the data and display the images on the page. Yay!&lt;/p&gt;
 
-&lt;p&gt;Now, my app is in Sandbox mode, which means I’m restricted to fetching only the most recent 20 images, and only 10 users can actually access the app (through the OAUTH2 authentication). In order to lift these restrictions and get access to other functionality, I need to apply for a review, then I can “go live”. That’s pretty strict, but maybe the Instagram guys don’t want kids abusing their API, or maybe they’re just control freaks. In any case, I go to apply, and…well, poop.&lt;/p&gt;
+&lt;p&gt;Now, my app was in Sandbox mode, which meant I’m restricted to fetching only the most recent 20 images, and only 10 users can actually access the app (through the OAUTH2 authentication). In order to lift these restrictions and get access to other functionality, I needed to apply for a review, then I could “go live”. That’s pretty strict, but maybe the Instagram guys don’t want kids abusing their API, or maybe they’re just control freaks. In any case, I went to apply, and…well, poop.&lt;/p&gt;
 
 &lt;h3 id=&quot;you-must-be-a-brand-advertiser-or-publisher-in-order-to-use-the-api-outside-of-sandbox-mode&quot;&gt;You must be a &lt;em&gt;brand&lt;/em&gt;, &lt;em&gt;advertiser&lt;/em&gt; or &lt;em&gt;publisher&lt;/em&gt; in order to use the API outside of Sandbox mode&lt;/h3&gt;
 
+&lt;p&gt;Or, your app must “allow users to login and share their own content” - i.e. you must be extending Instagram’s reach as an image-sharing platform into other domains.&lt;/p&gt;
+
 &lt;p&gt;Basically, Instagram has made their API as close to useless as possible for your average joe developer who just wants to make requests and access content. You’re rate-limited, you’re user-limited, you’re content-limited.&lt;/p&gt;
+
+&lt;p&gt;And that’s why Instagram’s API truly sucks.&lt;/p&gt;
 
 &lt;p&gt;What’s the point of even making an API available to use? I’m surprised that Instagram, as a child company of Facebook (that apparently has a very decent API), has taken these decisions to make their API so closed off. It stifles creativity and innovation. As someone who makes use of open source software every day, for professional and personal use, this kind of attitude makes me frustrated and sad.&lt;/p&gt;
 
@@ -75,10 +79,12 @@
         
         <category>cors</category>
         
+        <category>jsonp</category>
+        
         <category>oauth2</category>
         
         
-        <category>bitching</category>
+        <category>geek-talk</category>
         
       </item>
     
