@@ -7,7 +7,7 @@
 <script type="text/javascript" src="{{ site.baseurl }}/js/bundle.js"></script>
 <script src="https://use.fontawesome.com/361855abe7.js"></script>
 
-{% if site.google_analytics and jekyll.environment != "development" %}
+{% if site.google_analytics and site.environment == "production" %}
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
