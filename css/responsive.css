@@ -31,12 +31,12 @@
     }
 
     /* enable scrolling on landing page header */
-    .panel-cover.header-page-root {
+    .page-root .panel-cover {
         overflow-y: auto
     }
 
     /* needs a crazy z-index to display in front of the lightbox */
-    .panel-cover.header-page-gallery {
+    .page-gallery .panel-cover {
         z-index: 3000;
     }
 }
