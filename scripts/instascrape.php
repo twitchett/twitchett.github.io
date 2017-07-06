@@ -35,23 +35,18 @@ $props_to_delete = array(
 // ----- Step 1: get thumbnail urls ------
 
 $thumb_urls = json_decode(file_get_contents($thumbnail_file), true);
-$num_thumbs = count($thumb_urls);
 
-// check for new thumbnails from instagram
+// collect thumbnail URLs from instagram
 $response = json_decode(file_get_contents($thumbnail_url), true);
 foreach($response['items'] as $item) {
   $img_id = $item['id'];
-  if (!array_key_exists($img_id, $thumb_urls)) {
-    $thumb_url = $item['images']['thumbnail']['url'];
-    $thumb_urls[$img_id] = $thumb_url;
-  }
+  $thumb_url = $item['images']['thumbnail']['url'];
+  $thumb_urls[$img_id] = $thumb_url;
 }
 
-if ($num_thumbs < count($thumb_urls)) {
-  $success = write_json($thumbnail_file, $thumb_urls);
-  if (!$success) {
-    throw new Exception ('Error writing thumbnail ' . print_r($success));
-  }
+$success = write_json($thumbnail_file, $thumb_urls);
+if (!$success) {
+  throw new Exception ('Error writing thumbnails file: ' . print_r($success));
 }
 
 // ----- Step 2: get the rest of the data ------
