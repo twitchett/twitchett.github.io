@@ -5,9 +5,9 @@
     <description></description>
     <link>https://twitchett.github.io/</link>
     <atom:link href="https://twitchett.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 06 Jul 2017 22:46:17 +0000</pubDate>
-    <lastBuildDate>Thu, 06 Jul 2017 22:46:17 +0000</lastBuildDate>
-    <generator>Jekyll v3.4.3</generator>
+    <pubDate>Thu, 21 Sep 2017 09:41:43 +0200</pubDate>
+    <lastBuildDate>Thu, 21 Sep 2017 09:41:43 +0200</lastBuildDate>
+    <generator>Jekyll v3.5.2</generator>
     
       <item>
         <title>Why Instagram's API sucks</title>
@@ -67,7 +67,7 @@
 &lt;p&gt;But in my frustration I’ve been exploring alternatives to Instagram’s API and have come across some useful tools. Maybe I’ll make a follow-up post with those findings…&lt;/p&gt;
 
 </description>
-        <pubDate>Sun, 23 Apr 2017 12:30:00 +0000</pubDate>
+        <pubDate>Sun, 23 Apr 2017 14:30:00 +0200</pubDate>
         <link>https://twitchett.github.io/blog/2017/04/23/why-instagrams-api-sucks</link>
         <guid isPermaLink="true">https://twitchett.github.io/blog/2017/04/23/why-instagrams-api-sucks</guid>
         
@@ -164,7 +164,7 @@
 &lt;p&gt;Do you need it? Honestly, I don’t have a good answer. We were told by the administration in Denmark that Germany wouldn’t require it, and so far both the Bürgeramt and the Ausländerbehörde here have happily accepted it without question. We haven’t presented it to the UK or US authorities yet. It’s up to you. We sent one off to be legalised, just to be on the safe side.&lt;/p&gt;
 
 </description>
-        <pubDate>Sat, 15 Apr 2017 16:30:00 +0000</pubDate>
+        <pubDate>Sat, 15 Apr 2017 18:30:00 +0200</pubDate>
         <link>https://twitchett.github.io/blog/2017/04/15/how-to-get-married-in-denmark</link>
         <guid isPermaLink="true">https://twitchett.github.io/blog/2017/04/15/how-to-get-married-in-denmark</guid>
         
@@ -188,7 +188,7 @@
 &lt;p&gt;Having content and code so close together and under the same version control seems a bit icky, but maybe I’m just not used to working this way.&lt;/p&gt;
 
 </description>
-        <pubDate>Fri, 14 Apr 2017 05:20:24 +0000</pubDate>
+        <pubDate>Fri, 14 Apr 2017 07:20:24 +0200</pubDate>
         <link>https://twitchett.github.io/blog/2017/04/14/hello-world</link>
         <guid isPermaLink="true">https://twitchett.github.io/blog/2017/04/14/hello-world</guid>
         
