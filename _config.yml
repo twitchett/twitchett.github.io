@@ -20,7 +20,7 @@ disqus_shortname: twitchett
 
 # Build settings
 markdown: kramdown
-gems:
+plugins:
   - jekyll-feed
   - jekyll-paginate
 exclude:
