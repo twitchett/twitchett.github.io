@@ -1,7 +1,7 @@
 language: ruby
 
 rvm:
-  - 2.1.1
+  - 2.2.0
 
 env:
   global:
@@ -9,7 +9,7 @@ env:
     - secure: "NguCwGDUUuvSiZhoviT5uhhfzs6hPvTFRuz2UNVIq1fIlZGhm/aiQxTmNXf6UT1OW8ElBj1aCX509wF6SyH0SkEHSLQ7Dn9LgL8JujfrvqeGYTfQw9kLSxZS9CZKuYJiMnTK9hUrQm1pL+Uychx7fkIe94l2sZxH483swcBk/GkgcSDSCfV/GGMdnCF1C+qNj9cYQ/WbyQjehR7f9wlzFQDSfFm7huZk+YFmUK0PYUaHQluLz44RS6t1YJhpk8gv1GYg20+BxrCtvGJ982mwCKKfPje6SSfw/holM5rbolWWyBQJuYmS8i0xYh8f4iVwsm9+8JdPeGpzJlAB62pKZ5INAvtxr4z+2BXZ1IyWFqdeErlu2xsmB2ypdYUzx72CTJuqQuZ9ghYppaBsxXukfvOaIpGKl2fOrHYVJfeV6Woh+/gnH++zhLWEcFJlsTguxgWeQIVXtbpOscyBQH8t8jL9qYBrf+mrnW1+Vlmdj+Sp85I/2/f5NeaDJDJs/LtVjPFCcxq+99dNPUfnHqsEunBxnzr3vgv6i4KDqjlRxnRy4qsZoLcyv2pU2Yi8PcFLPP+n7cMpAoHh8vtuk4ttdSAzUlgDKbQDBmu4hfkdCELLbMh+zwxsp0or8ccxFA5xbKSzO7d15pWSgHMNPwGI+v7TbM2Hvi5sjoY6b66wmDs="
 
 before_install:
-  - nvm install v6.10.2
+  - nvm install v8.9.4
 
 install:
   - npm install
