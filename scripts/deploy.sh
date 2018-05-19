@@ -32,7 +32,7 @@ echo "$script: Prepared files for commit"
 
 # commit, push
 git commit -m "$commitMsg" && git push origin master
-echo "$script: Pushed to master"
+echo "$script: Pushed to $(git rev-parse --abbrev-ref HEAD)"
 
 # restore working state
 git checkout source && git stash pop
