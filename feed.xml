@@ -5,9 +5,51 @@
     <description></description>
     <link>https://twitchett.github.io/</link>
     <atom:link href="https://twitchett.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 21 Sep 2017 09:41:43 +0200</pubDate>
-    <lastBuildDate>Thu, 21 Sep 2017 09:41:43 +0200</lastBuildDate>
-    <generator>Jekyll v3.5.2</generator>
+    <pubDate>Sat, 19 May 2018 19:54:48 +0200</pubDate>
+    <lastBuildDate>Sat, 19 May 2018 19:54:48 +0200</lastBuildDate>
+    <generator>Jekyll v3.7.3</generator>
+    
+      <item>
+        <title>Making screensavers like it's 1995</title>
+        <description>&lt;p&gt;I’m not sure why it never occurred to me before to use code to create pretty visual things. Probably because of a long-standing aversion to CSS which I can only blame the Myspace era for.&lt;/p&gt;
+
+&lt;p&gt;But earlier this year I went to the &lt;a href=&quot;http://clojured.de/&quot;&gt;clojureD&lt;/a&gt; conference, where amid the many talks of AI, repls, automated testing, SPAs and so forth, was a presentation by Lisa Passing on interactive art. Effectively it was using Clojure to make coloured shapes wiggle around a screen. And no CSS in sight! I tend to end up writing Serious Business code for work, so the idea of making something pointless and fun was pretty exciting. I was inspired to give it a go.&lt;/p&gt;
+
+&lt;p&gt;The library is &lt;a href=&quot;https://quil.info&quot;&gt;Quil&lt;/a&gt;. It’s a Clojure wrapper for &lt;a href=&quot;https://processing.org/&quot;&gt;Processing&lt;/a&gt;, which is a Java-esque tool for creating 2D and 3D visuals. It’s free and open-source! AND there’s a Javascript port, &lt;a href=&quot;http://processingjs.org/&quot;&gt;Processing.js&lt;/a&gt;, which Quil also supports, all of which means you can write your Quil sketch using either Clojure or ClojureScript. Yay. I want to run my animation in the browser, so I’m using Clojurescript.&lt;/p&gt;
+
+&lt;p&gt;The Quil API is well documented, and there are an the abundance of Processing &lt;a href=&quot;https://processing.org/tutorials/&quot;&gt;tutorials&lt;/a&gt;/&lt;a href=&quot;https://processing.org/examples/&quot;&gt;examples&lt;/a&gt; available (though you’ll have to figure out the Quil syntax from the Java code). It’s also very straightforward just to create a blank canvas and start playing around with the multitude of different functions.&lt;/p&gt;
+
+&lt;p&gt;Point is, you can make nice things happen with very little effort, and it is incredibly fun and satisfying. Look:&lt;/p&gt;
+
+&lt;div&gt;
+    &lt;canvas id=&quot;lines&quot;&gt;&lt;/canvas&gt;
+    &lt;script src=&quot;https://twitchett.github.io/assets/main.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;lines.core.run_sketch()&lt;/script&gt;
+&lt;/div&gt;
+
+&lt;p&gt;It’s essentially a circle that moves from A to B along a randomly generated curve, and changes hue along the way. Thrilling, right? So far everything I’ve made bears some resemblence to a Windows 95 screensaver. The source code is on &lt;a href=&quot;https://github.com/twitchett/lines/blob/master/src/lines/core.cljs&quot;&gt;github&lt;/a&gt;, for anyone interested.&lt;/p&gt;
+
+&lt;p&gt;Like a good developer, I also wrote some unit tests. This took about 20 times longer than writing the actual code (story of my life). Not the actual writing of the tests, which was a joy thanks to &lt;a href=&quot;https://clojurescript.org/tools/testing&quot;&gt;cljs.test&lt;/a&gt;, but the setting up of the test tooling itself. Because the Clojurescript tools are not yet that mature, and the tests are running in Javascript-land (i.e. a browser), there is a lot of glueing together of parts to do, and much of it is left to the developer. But definitely an informative exercise, and definitely recommended.&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 18 May 2019 14:30:00 +0200</pubDate>
+        <link>https://twitchett.github.io/blog/2019/05/18/making-screensavers-like-its-1995</link>
+        <guid isPermaLink="true">https://twitchett.github.io/blog/2019/05/18/making-screensavers-like-its-1995</guid>
+        
+        <category>tech</category>
+        
+        <category>clojure</category>
+        
+        <category>clojurescript</category>
+        
+        <category>quil</category>
+        
+        <category>art</category>
+        
+        
+        <category>geek-talk</category>
+        
+      </item>
     
       <item>
         <title>Why Instagram's API sucks</title>

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Tabitha Goodall</title>
+  <title>Making screensavers like it's 1995</title>
   <meta name="description" content="">
   <meta name="author" content="Tabitha Goodall">
   <meta name="HandheldFriendly" content="True">
@@ -49,12 +49,12 @@
   <link rel="stylesheet" href="/css/theme/main.css">
   <link rel="stylesheet" href="/css/main.css">
   
-  <link rel="canonical" href="https://twitchett.github.io/_pages/blog">
+  <link rel="canonical" href="https://twitchett.github.io/blog/2019/05/18/making-screensavers-like-its-1995">
   <link rel="alternate" type="application/rss+xml" title="Tabitha Goodall" href="/feed.xml">
 </head>
 
 
-  <body class="page-blog">
+  <body class="page-">
     <!-- mobile only: pull down menu for non-landing pages -->
 
   <span class="mobile btn-mobile-menu">
@@ -63,7 +63,7 @@
   </span>
 
 
-<header class="panel-cover header-page-blog" style="background-image: url(/images/cover.jpg)">
+<header class="panel-cover header-page-" style="background-image: url(/images/cover.jpg)">
   <div class="panel-main">
 
 
@@ -87,7 +87,7 @@
             <nav class="cover-navigation cover-navigation--primary">
     <ul class="navigation">
         
-        <li class="navigation__item active">
+        <li class="navigation__item ">
             <a href="/blog" title="it's a blog" class="blog-button">Blog</a>
         </li>
         <li class="navigation__item ">
@@ -169,27 +169,63 @@
 
     <div class="content-wrapper">
       <div class="content-wrapper__inner">
-        <header class="page-header">
-  <h1 class="page-title">It's a blog</h1>
-</header>
+        <article class="post-container post-container--single">
+  <header class="post-header">
+    <a class="back-link" href="javascript: history.go(-1);"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> go back</a>
+    <div class="post-meta">
+      <time datetime="18 May 2019" class="post-meta__date date">18 May 2019</time> &#8226;
+      <span class="post-meta__tags">on: <a href="/tags/#tech">tech</a>, <a href="/tags/#clojure">clojure</a>, <a href="/tags/#clojurescript">clojurescript</a>, <a href="/tags/#quil">quil</a>, <a href="/tags/#art">art</a></span>
+    </div>
+    <h1 class="post-title">Making screensavers like it's 1995</h1>
+    <h2 class="post-subtitle"></h2>
+  </header>
 
-<div class="pre-post-list">
-See all: <a href="/tags">tags</a> | <a href="/categories">categories</a>
+  <section class="post">
+    <p>I’m not sure why it never occurred to me before to use code to create pretty visual things. Probably because of a long-standing aversion to CSS which I can only blame the Myspace era for.</p>
+
+<p>But earlier this year I went to the <a href="http://clojured.de/">clojureD</a> conference, where amid the many talks of AI, repls, automated testing, SPAs and so forth, was a presentation by Lisa Passing on interactive art. Effectively it was using Clojure to make coloured shapes wiggle around a screen. And no CSS in sight! I tend to end up writing Serious Business code for work, so the idea of making something pointless and fun was pretty exciting. I was inspired to give it a go.</p>
+
+<p>The library is <a href="https://quil.info">Quil</a>. It’s a Clojure wrapper for <a href="https://processing.org/">Processing</a>, which is a Java-esque tool for creating 2D and 3D visuals. It’s free and open-source! AND there’s a Javascript port, <a href="http://processingjs.org/">Processing.js</a>, which Quil also supports, all of which means you can write your Quil sketch using either Clojure or ClojureScript. Yay. I want to run my animation in the browser, so I’m using Clojurescript.</p>
+
+<p>The Quil API is well documented, and there are an the abundance of Processing <a href="https://processing.org/tutorials/">tutorials</a>/<a href="https://processing.org/examples/">examples</a> available (though you’ll have to figure out the Quil syntax from the Java code). It’s also very straightforward just to create a blank canvas and start playing around with the multitude of different functions.</p>
+
+<p>Point is, you can make nice things happen with very little effort, and it is incredibly fun and satisfying. Look:</p>
+
+<div>
+    <canvas id="lines"></canvas>
+    <script src="https://twitchett.github.io/assets/main.js"></script>
+    <script>lines.core.run_sketch()</script>
 </div>
 
-<hr class="post-list__divider">
+<p>It’s essentially a circle that moves from A to B along a randomly generated curve, and changes hue along the way. Thrilling, right? So far everything I’ve made bears some resemblence to a Windows 95 screensaver. The source code is on <a href="https://github.com/twitchett/lines/blob/master/src/lines/core.cljs">github</a>, for anyone interested.</p>
 
-<div class="main-post-list">
+<p>Like a good developer, I also wrote some unit tests. This took about 20 times longer than writing the actual code (story of my life). Not the actual writing of the tests, which was a joy thanks to <a href="https://clojurescript.org/tools/testing">cljs.test</a>, but the setting up of the test tooling itself. Because the Clojurescript tools are not yet that mature, and the tests are running in Javascript-land (i.e. a browser), there is a lot of glueing together of parts to do, and much of it is left to the developer. But definitely an informative exercise, and definitely recommended.</p>
 
-  <ol class="post-list">
-    
-  </ol>
 
-  <hr class="post-list__divider ">
+  </section>
+  <footer class="post-footer">
+    <a class="back-link" href="javascript: history.go(-1);"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> go back</a>
+  </footer>
+  <section id="disqus_thread"></section><!-- /#disqus_thread -->
+</article>
 
-  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'https://twitchett.github.io/blog/2019/05/18/making-screensavers-like-its-1995';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = '/blog/2019/05/18/making-screensavers-like-its-1995'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
 
-</div>
+      (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//twitchett.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+       })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
 
       </div>
 
