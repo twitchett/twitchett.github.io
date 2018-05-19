@@ -4,6 +4,10 @@
 # it's only awkward because github requires that all source files are in root.
 # see: https://help.github.com/articles/generic-jekyll-build-failures/#source-setting
 
+set -e
+set -o pipefail
+set -x
+
 script="deploy"
 
 # set commitMsg to first arg if passed, otherwise set to default value
