@@ -9,13 +9,15 @@ Hi! I'm Tabi.
 
 I built this site mainly as a way to learn and experiment with new technologies, and also because I felt that being a web developer, I should probably have an actual website.
 
-It's a Jekyll site with a React app thrown in for good measure, cobbled together with the help of some PHP and little bit of Ruby. It's served on Github pages, which I initially thought would make life simple, but in actual fact just resulted in having to write some messy bash scripts to get around their restrictions.
+I like lots of things other than coding: [books][goodreads], video games, moderate veganism, pretty much any form of physical activity (running, swimming, climbing, lifting...), traveling, being outdoors, drawing, quirky TV shows, music (especially electronic breaks - think Underworld, Leftfield...)
 
 I'm always open to hearing about new projects. If you like what you see, get in touch!
 
+[goodreads]: https://www.goodreads.com/user/show/14729951-tabi
+
 <div>
   <form class="well form-horizontal contact_form" action=" " method="POST" id="contact_form">
-    <div class="alert alert-success success_message" role="alert">Thanks! Your message has been submitted.</div>
+    <div class="alert alert-success success_message" role="alert">Thank you come again!</div>
     <fieldset>
       <!-- Text input-->
       <div class="form-group">
