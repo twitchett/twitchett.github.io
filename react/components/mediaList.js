@@ -5,39 +5,39 @@ class MediaList extends React.Component {
 
     constructor (props) {
         super(props)
-        this.state = {
-            currentImage: 0,
-            lightboxIsOpen: false
-        }
+        this.state = this.getInitialState()
+
         // prepare images array for lightbox viewer
-        this.images = []
-        for (const item of props.data) {
-            this.images.push({
-                src: item.imageHighResolutionUrl,
-                caption: item.caption
-            })
-        }
+        this.images = props.data.map(item => ({
+            caption: item.caption,
+            src: item.highResolutionUrl,
+        }))
+
         this.openLightbox = this.openLightbox.bind(this)
         this.closeLightbox = this.closeLightbox.bind(this)
         this.goToNext = this.goToNext.bind(this)
         this.goToPrevious = this.goToPrevious.bind(this)
         this.goToIndex = this.goToIndex.bind(this)
-
+        this.getInitialState = this.getInitialState.bind(this)
     }
 
-    openLightbox (idx, event) {
+    getInitialState () {
+        return {
+            currentImage: 0,
+            lightboxIsOpen: false
+        }
+    }
+
+    openLightbox (event, idx) {
         event.preventDefault()
         this.setState({
+            lightboxIsOpen: true,
             currentImage: idx,
-            lightboxIsOpen: true
         })
     }
 
     closeLightbox () {
-        this.setState({
-            currentImage: 0,
-            lightboxIsOpen: false
-        })
+        this.setState(this.getInitialState())
     }
 
     goToNext () {
@@ -49,22 +49,19 @@ class MediaList extends React.Component {
     }
 
     goToIndex (idx) {
-        this.setState ({ currentImage: idx })
+        this.setState({ currentImage: idx })
     }
 
     render () {
-        let styles = {
-            img: {
-                display: 'inline-block',
-                padding: 5
-            }
-        }
+        const { currentImage, lightboxIsOpen } = this.state
+        const { data } = this.props
+
         return (
             <div>
-                <div class="lightbox_container">
+                <div>
                     <Lightbox images={this.images}
-                        currentImage={this.state.currentImage}
-                        isOpen={this.state.lightboxIsOpen}
+                        currentImage={currentImage}
+                        isOpen={lightboxIsOpen}
                         onClose={this.closeLightbox}
                         onClickNext={this.goToNext}
                         onClickPrev={this.goToPrevious}
@@ -74,13 +71,20 @@ class MediaList extends React.Component {
                         showCloseButton={false}
                     />
                 </div>
-                {this.props.data.map((item, idx) =>
-                    <a href="#"  onClick={evt => this.openLightbox(idx, evt)}>
-                        <img src={item.imageSquareThumbnailUrl} style={styles.img} />
+                {data.map((item, idx) =>
+                    <a href="#" onClick={e => this.openLightbox(e, idx)}>
+                        <img src={item.thumbnailUrl} style={styles.img} />
                     </a>
                 )}
             </div>
         )
+    }
+}
+
+const styles = {
+    img: {
+        display: 'inline-block',
+        padding: 5
     }
 }
 

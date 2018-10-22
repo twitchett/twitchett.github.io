@@ -3,5 +3,4 @@
 .sass-cache
 .jekyll-metadata
 npm-debug.log
-/src/_data/instadump.json
 /src/js/bundle.js

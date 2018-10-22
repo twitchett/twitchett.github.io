@@ -2,85 +2,62 @@
 
 /*
 * Script to pull data from instagram, a quick & dirty workaround for API restrictions.
+* It fetches the user's images, extract properies, and write the results to a JSON file.
 *
-* First: get thumbnail URLs. We keep these in a file and just append when there is a new image.
-* Unfortunately can't get them any other way.
-* This file is persisted and checked into git.
-*
-* Second: scrape data using the php scraper. See: https://github.com/postaddictme/instagram-php-scraper
-*
-* Finally, combine thumbnails with scraped data. The final json file is regenerated every time
-* and is not under version control.
+* DEPENDENCIES: php script from https://github.com/postaddictme/instagram-php-scraper.
+* Follow installation instructions on the repo.
 *
 */
 
-require __DIR__."/../../instagram-php-scraper/index.php";
+require __DIR__."/../../instagram-php-scraper/vendor/autoload.php";
 use InstagramScraper\Instagram;
-
-// config 
+$instagram = new Instagram();
 
 $username = "tabi.twitchett";
-$thumbnail_url = "https://www.instagram.com/" . $username . "/media";
 $data_dir = __DIR__ . '/../src/_data/';
 $output_file = $data_dir . "instadump.json";
-$thumbnail_file = $data_dir . "instathumbs.json";
-$props_to_delete = array(
-  "owner",
-  "videoLowResolutionUrl",
-  "videoStandardResolutionUrl",
-  "videoLowBandwidthUrl",
-  "videoViews"
-);
+$gallery_list = [];
 
-// ----- Step 1: get thumbnail urls ------
+$max_id = NULL;
+$fetch_count = 1;
+do {
+  echo "fetching page {$fetch_count}...\n";
 
-$thumb_urls = json_decode(file_get_contents($thumbnail_file), true);
+  // get the data
+  $api_response = $instagram->getPaginateMedias($username, $max_id);
+  $has_next_page = $api_response['hasNextPage'];
+  $medias = $api_response['medias'];
+  $max_id = $api_response['maxId'];
 
-// collect thumbnail URLs from instagram
-$response = json_decode(file_get_contents($thumbnail_url), true);
-foreach($response['items'] as $item) {
-  $img_id = $item['id'];
-  $thumb_url = $item['images']['thumbnail']['url'];
-  $thumb_urls[$img_id] = $thumb_url;
-}
-
-$success = write_json($thumbnail_file, $thumb_urls);
-if (!$success) {
-  throw new Exception ('Error writing thumbnails file: ' . print_r($success));
-}
-
-// ----- Step 2: get the rest of the data ------
-
-$media_list = Instagram::getMedias($username, 200);
-
-foreach($media_list as $media) {
-  // add the thumbnail url
-  $thumb_url = $thumb_urls[$media->id];
-  if (!$thumb_url) {
-    throw new Exception('Could not find thumbnail url for img: ' . print_r($media, true));
+  // extract to array
+  foreach($medias as $media_item) {
+    array_push($gallery_list, createImageObject($media_item));
   }
-  $media->imageSquareThumbnailUrl = $thumb_url;
-  // prune unwanted properties
-  foreach ($media as $key => $value) {
-    if (in_array($key, $props_to_delete)) {
-      unset($media->{$key});
-    }
-    if ($key == 'caption') {
-      echo $media->$key; // debug
-    }
-  }
-}
 
-// write to file
-$success = write_json($output_file, $media_list);
+  $fetch_count += 1;
+} while($has_next_page === true);
+
+// persist
+$success = write_json($output_file, $gallery_list);
 
 if ($success) {
-  echo "instagram scraper wrote " .  count($media_list) . " items to " . $output_file;
+  echo "instagram scraper wrote " .  count($gallery_list) . " items to " . $output_file . "\n";
 } else {
-  echo "error with instagram scrape";
+  echo "error with instagram scrape\n";
 }
 
+// convert API response item to php object, with only the props we need
+function createImageObject($media) {
+  return (object) array(
+    'id' => $media->getId(),
+    'thumbnailUrl' => $media->getSquareImages()[0],
+    'highResolutionUrl' => $media->getImageHighResolutionUrl(),
+    'instagramUrl' => $media->getLink(),
+    'caption' => $media->getCaption()
+  );
+}
 
+// write the image data to a local file
 function write_json($filename, $data) {
   return file_put_contents($filename, json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
 }
