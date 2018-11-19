@@ -5,8 +5,6 @@ permalink: /cv/
 pagetype: cv
 ---
 
-<!-- Download the polished PDF version [here][cv]. -->
-
 ## Profile
 
 I'm a full-stack developer, working primarily with **Vue**, **React**, **Node**, **Java**, **Kotlin**, **Python**, **Docker**, **CouchDB**, and many other tools. In my spare time I'm really enjoying building things in **Clojure/ClojureScript**.
@@ -15,12 +13,20 @@ Above all, though, I'm looking for a great team rather than the perfect stack. M
 
 ## Career
 
+#### **Senior React-Native Developer (Freelance)**
+[Gritspot][gritspot], Berlin &#8226; *September 2018 - November 2018*
+
+Developing an ios app to track participants' heart rates via Bluetooth sensors, in real-time, during group workouts.
+
+*Technologies: JavaScript ES6, React Native, Redux, Styled Components, BLE*
+
+
 #### **Senior Full-Stack Developer (Freelance)**
-[heycar][heycar], Berlin &#8226; *February 2017 - present*
+[heycar][heycar], Berlin &#8226; *February 2018 - August 2018*
 
 Building isomorphic web apps and backend microservices for a used car platform.
 
-*Technologies: Vue, Vuex, Typescript, React, Redux, SSR, CSS-in-JS, Java 8, Spring Boot, PostgreSQL*
+*Technologies: Vue, Vuex, Typescript, React, Redux, SSR, Styled Components, Java 8, Spring Boot, PostgreSQL*
 
 
 #### **Senior Javascript Developer (Freelance)**
@@ -45,10 +51,13 @@ Various paid and personal projects. Clients included Reading University's Rock S
 
 *Technologies: mostly PHP and MySQL*
 
+[gritspot]: https://www.gritspot.com/
 [eHA]: https://www.ehealthafrica.org/
 [heycar]: https://www.hey.car/
 [dmc]: https://diconium.com/
 [cv]: ???
+
+
 
 
 ## Academic Qualifications
